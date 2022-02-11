@@ -1,0 +1,96 @@
+{
+  "resume": [
+    {
+      "id": 1,
+      "fullname": "sasas",
+      "designation": "sdsa",
+      "email": "sdas@sdfs",
+      "phoneno": "sdssdfdss",
+      "technicalskills": [
+        {
+          "skill": "sdasds"
+        }
+      ],
+      "experiences": [
+        {
+          "companyname": "sds",
+          "compDesignation": "df",
+          "expDetails": "ds",
+          "startingyear": 555,
+          "endingyear": 565
+        }
+      ],
+      "education": [
+        {
+          "universityname": "sd",
+          "course": "sds",
+          "percentage": 255
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullname": "fhgfhg",
+      "designation": "fgdf",
+      "email": "gf@gfg",
+      "phoneno": "fgfgfgfgfg",
+      "technicalskills": [
+        {
+          "skill": "fgf"
+        }
+      ],
+      "experiences": [
+        {
+          "companyname": "gfdf",
+          "compDesignation": "fgf",
+          "expDetails": "fgf454",
+          "startingyear": 544,
+          "endingyear": 454
+        }
+      ],
+      "education": [
+        {
+          "universityname": "fdgd",
+          "course": "4df",
+          "percentage": 4545
+        },
+        {
+          "universityname": "rter",
+          "course": "rtre",
+          "percentage": 4543
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fullname": "sdffg",
+      "designation": "dfs",
+      "email": "dsd@vcd",
+      "phoneno": "dfdsdfdsd",
+      "technicalskills": [
+        {
+          "skill": "dfsd"
+        },
+        {
+          "skill": "fsd"
+        }
+      ],
+      "experiences": [
+        {
+          "companyname": "dfd",
+          "compDesignation": "dsfds",
+          "expDetails": "dsfds",
+          "startingyear": 45,
+          "endingyear": 4543
+        }
+      ],
+      "education": [
+        {
+          "universityname": "dfdf",
+          "course": "43",
+          "percentage": 434
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="title">Resume Builder Form</div>
+    <div class="content">
+      <form action="#" [formGroup]="resumeForm" (ngSubmit)="createResume()">
+        <div class="user-details">
+
+          <div class="input-box">
+            <label class="details box" for="fullname">Full Name</label>
+            <input type="text" placeholder="Enter your name" formControlName="fullname">
+            <span *ngIf="(f['fullname']?.touched) && f['fullname'].errors?.['required']" class="text-danger box">Please enter your Name.</span>
+            <span *ngIf="(f['fullname']?.dirty) && (f['fullname'].errors?.['minlength'] || (f['fullname'].errors?.['maxlength']))" class="text-danger box">Name Should have minimum 4 and maximum 8 characters</span>
+          </div>
+
+          <div class="input-box">
+            <label class="details box" for="designation">Designation</label>
+            <input type="text" placeholder="WebDesigner, Director" formControlName="designation">
+            <span *ngIf="(f['designation']?.touched) && f['designation'].errors?.['required']" class="text-danger box">Please enter your Designation.</span>
+          </div>
+
+          <div class="input-box">
+            <label class="details box" for="email">Email</label>
+            <input type="email" placeholder="Enter your email" formControlName="email">
+            <span *ngIf="(f['email']?.touched) && f['email'].errors?.['required']" class="text-danger box">Please enter your Email.</span>
+            <span *ngIf="(f['email']?.dirty) && f['email'].errors?.['email']" class="text-danger box">Please enter correct Email.</span>
+          </div>
+
+          <div class="input-box">
+            <label class="details box" for="phoneno">Phone Number</label>
+            <input type="text" placeholder="Enter your number" formControlName="phoneno">
+            <span *ngIf="(f['phoneno']?.touched) && f['phoneno'].errors?.['required']" class="text-danger box">Please enter your Phoneno.</span>
+            <span *ngIf="(f['phoneno']?.dirty) && (f['phoneno'].errors?.['minlength'] || (f['phoneno'].errors?.['maxlength']))" class="text-danger box">Phone no have 10 characters only</span>
+          </div>
+
+          <div class="input-box">
+            <label class="details box" for="technicalskills">Technical Skills</label>
+            <button type="button" class="btn btn-primary m-2" (click)="addTechnicalSkills()" style="margin-right: 5px;"> + Add Technical Skills</button>
+            <div formArrayName="technicalskills">
+                <div *ngFor="let row of skill.controls; let i=index">
+                    <div [formGroupName]="i">
+                        <input formControlName="skill" placeholder="Add skill like 'HTML'"> 
+                        <button class="btn btn-danger m-2" (click)="removeskill(i)">Delete</button>
+                        <!-- <span *ngIf="row.errors?.['required']" class="text-danger box">Skill required.</span> -->
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label class="details box" for="technicalskills">Experience</label>
+            <button type="button" class="btn btn-primary m-2" (click)="addExperience()" style="margin-right: 5px;"> + Add experience</button>
+            <div formArrayName="experiences" class="p-2">
+                <div *ngFor="let row of experiences.controls ; let i=index">
+                    <div [formGroupName]="i">
+                        <input formControlName="companyname" placeholder="Company Name"> 
+                        <input type="text" formControlName="compDesignation" placeholder="Your designation">
+                        <textarea formControlName="expDetails" cols="30" rows="10" placeholder="Write about working experience in the company"></textarea>
+                        <input type="number" id="yearPicker" placeholder="Staring year of company" formControlName="startingyear" >
+                        <input type="number" id="yearPicker" placeholder="End year of company" formControlName="endingyear">
+                        <button class="btn btn-danger m-2" (click)="removeExperience(i)">Delete</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label class="details box" for="technicalskills">Education Details</label>
+            <button type="button" class="btn btn-primary m-2" (click)="addEducation()" style="margin-right: 5px;"> + Add Education</button>
+            <div formArrayName="education">
+                <div *ngFor="let row of education.controls; let i=index">
+                    <div [formGroupName]="i">
+                        <input formControlName="universityname" placeholder="University/school name">
+                        <input type="text" formControlName="course" placeholder="Enter your course like BE IT, BCA, MCA">
+                        <input type="number" formControlName="percentage" id="percentage" placeholder="Enter CGPA/Percentage"> 
+                        <button class="btn btn-danger m-2" (click)="removeEducation(i)">Delete</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Create Resume">
+        </div>
+      </form>
+    </div>
+</div>
