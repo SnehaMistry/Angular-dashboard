@@ -1,9 +1,12 @@
 <div>
+    <!-- add header of the page -->
     <app-header></app-header>
 </div>
 <div>
+    <!-- user form compnent with parent child communication -->
     <app-user-form [clientNames]="clientnameOptions" [offices]="OfficeOptions" (createUser)="saveUserDetail($event)"></app-user-form>
 </div>
 <div>
+    <!-- user listing component with parent child communication -->
     <app-user-listing [userList]="UserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions"></app-user-listing>
 </div>

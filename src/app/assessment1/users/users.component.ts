@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
     this.getUserData();
   }
 
+  // Get the client data from the json server
   public getClientNames()
   {
     this.userservice.getClient().subscribe({
@@ -30,6 +31,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  // get office data from the json server
   public getOffices()
   {
     this.userservice.getOffice().subscribe({
@@ -40,6 +42,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  //save the user details on submit of the form
   public saveUserDetail(user : User)
   {
     this.userservice.saveUsers(user).subscribe({
@@ -53,6 +56,7 @@ export class UsersComponent implements OnInit {
     });  
   }
 
+  //method for get all the user data from user
   public getUserData()
   {
     this.userservice.getAllUsers().subscribe({
