@@ -1,0 +1,9 @@
+<div>
+    <app-header></app-header>
+</div>
+<div>
+    <app-user-form [clientNames]="clientnameOptions" [offices]="OfficeOptions" (createUser)="saveUserDetail($event)"></app-user-form>
+</div>
+<div>
+    <app-user-listing [userList]="UserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions"></app-user-listing>
+</div>

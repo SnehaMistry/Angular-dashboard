@@ -4,7 +4,8 @@ import { ResumeBuilderModule } from './feature/resume-builder/resume-builder.mod
 
 const routes: Routes = [
   {path: '', pathMatch : 'full' ,redirectTo : "resume-builder"},
-  {path:"resume-builder", loadChildren: () => import('./feature/resume-builder/resume-builder.module').then(m => m.ResumeBuilderModule)}
+  {path:"resume-builder", loadChildren: () => import('./feature/resume-builder/resume-builder.module').then(m => m.ResumeBuilderModule)},
+  {path:"users", loadChildren: () => import('./assessment1/users/users.module').then(m => m.UsersModule)}
 
 ];
 

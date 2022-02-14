@@ -16,8 +16,7 @@ html{
     background-color: white;
 }
 body{
-  display: flex;
-  align-items: center;
+  line-height: 1.6;
 }
 .container{
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
@@ -163,5 +162,149 @@ form .user-details .input-box{
   @media(max-width: 459px){
   .container .content .category{
     flex-direction: column;
+  }
+}
+
+.navbar-container{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#navbar {
+  left: 0;
+  right: 0;
+  width: 85vw;
+  border-bottom: 0.2rem solid #f3f2f5;
+}
+
+.home-link{
+  padding: 0 2rem;
+}
+.home-link,
+.navbar-link {
+  color: #000000;
+  text-decoration: none;
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+  
+}
+
+.navbar-link {
+  justify-content: center;
+  width: 100%;
+  padding: 0 0.8em;
+  
+  .active{
+    border-bottom: 1rem solid #2f6bff;  
+    }
+}
+#navbar-menu .navbar-links{
+  list-style: none;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0rem;
+}
+
+.form-header{
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.new-user-btn{
+  background-color: #2f6bff;
+  color: #fff;
+  padding: 0.2rem;
+  border: 1px solid #2f6bff;
+  border-radius: 3px;
+  margin-left: 2rem;
+}
+
+.user-form{
+  border: 1px thin #f3f2f5;
+  display: flex;
+}
+.disable{
+  display: none;
+}
+.form-control-div{
+  position: relative;
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: 5px;
+  bottom: 10px;
+  left: 15px;
+  font-size: 11px;
+}
+
+.inputText {
+  font-size: 14px;
+  width: 23rem;
+  height: 35px;
+  color: #000000;
+  margin: 0.35rem 1rem;
+  padding-left: 0.5rem;
+}
+
+.select-op{
+  width: 13rem;
+  height: 27px;
+  margin-left: 0.4rem;
+}
+
+.inputText:focus{
+  border: 0.2rem solid rgba(181,191,219,1);
+  box-shadow: 1rem rgba(181,191,219,1);
+}
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 18px;
+  transition: 0.1s ease all;
+}
+
+.form-btn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-control-div{
+  margin-bottom: 3rem;
+}
+.bttn{
+  padding: 0.4rem 1.5rem;
+  margin: 0.5rem;
+}
+.btn-black{
+  background-color: #000000;
+  color: #ffffff;
+}
+.btn-blue{
+  background-color: #2f6bff;
+  color: #ffffff;
+}
+.error{
+  color: red;
+  margin-left:1rem ;
+}
+.table-container{
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+
+  tr{
+    background-color: #e5e7ea;
+  }
+
+  td,th{
+    padding: 8px;
   }
 }

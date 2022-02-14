@@ -1,0 +1,49 @@
+{
+  "office": [
+    {
+      "id": 1,
+      "name": "Office1"
+    },
+    {
+      "id": 2,
+      "name": "Office2"
+    },
+    {
+      "id": 3,
+      "name": "Office3"
+    },
+    {
+      "id": 4,
+      "name": "Office4"
+    },
+    {
+      "id": 5,
+      "name": "Office5"
+    }
+  ],
+  "client": [
+    {
+      "id": 1,
+      "name": "Apple"
+    },
+    {
+      "id": 2,
+      "name": "JBL"
+    },
+    {
+      "id": 3,
+      "name": "1Rivet"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "devansh",
+      "lastName": "desai",
+      "clientName": "1",
+      "email": "hinal11@jk.vom",
+      "contactno": "5588878522",
+      "office": "3"
+    }
+  ]
+}

@@ -145,7 +145,6 @@ export class ResumeFormComponent implements OnInit {
     this.resumeservice.saveResumeDetails(resumedetails).subscribe({
       next : v => {
         this.resetForm();
-        console.log(v);
         this.router.navigate(['resume/'+ v.id]);
       }
     });  
