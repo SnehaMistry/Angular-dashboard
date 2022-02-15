@@ -16,6 +16,7 @@ export class UserFormComponent implements OnInit {
   @Input() clientNames: Client[];
   @Input() offices: Office[];
   @Output() createUser: EventEmitter<User> = new EventEmitter<User>();
+  @Output() updateUser: EventEmitter<User> = new EventEmitter<User>();
   @Input() editToUser : User;
 
   ngOnInit(): void {
@@ -39,10 +40,10 @@ export class UserFormComponent implements OnInit {
       id:[],
       firstName: ['',[Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]],
       lastName: ['',[Validators.required,  Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]],
-      clientName : ['', Validators.required],
+      clientName : [0, Validators.required],
       email: ['',[Validators.required,Validators.email]],
       contactno: [null,[Validators.required, Validators.pattern('^[0-9]*((-|\s)*[0-9])*$'), Validators.minLength(10), Validators.maxLength(10)]],
-      office: [null,Validators.required]
+      office: [0,Validators.required]
     });
   }
 
@@ -50,8 +51,17 @@ export class UserFormComponent implements OnInit {
   {
      if(this.userForm.valid)
      {
-       this.createUser.emit(this.userForm.value);
-       this.resetForm();
+       if(!this.userForm.value.id)
+       {
+        this.createUser.emit(this.userForm.value);
+        this.resetForm();
+       }
+       else{
+         console.log("hi");
+        this.updateUser.emit(this.userForm.value);
+        this.resetForm();
+       }
+       
      }
   }
 

@@ -231,12 +231,16 @@ form .user-details .input-box{
 .user-form{
   border: 1px thin #f3f2f5;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .disable{
   display: none;
 }
 .form-control-div{
   position: relative;
+  flex-grow: 1;
+  margin: 1rem;
 }
 
 input:focus ~ .floating-label,
@@ -249,11 +253,10 @@ input:not(:focus):valid ~ .floating-label{
 
 .inputText {
   font-size: 14px;
-  width: 23rem;
   height: 35px;
   color: #000000;
-  margin: 0.35rem 1rem;
   padding-left: 0.5rem;
+  width: 100%;
 }
 
 .select-op{

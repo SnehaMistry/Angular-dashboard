@@ -15,7 +15,7 @@
 </div>
 <div>
     <!-- user form compnent with parent child communication -->
-    <app-user-form *ngIf="isNewUserAdd === true" [clientNames]="clientnameOptions" [offices]="OfficeOptions"  [editToUser]="edituser" (createUser)="saveUserDetail($event)"></app-user-form>
+    <app-user-form *ngIf="isNewUserAdd === true" [clientNames]="clientnameOptions" [offices]="OfficeOptions"  [editToUser]="edituser" (createUser)="saveUserDetail($event)" (updateUser)="updateUserDetail($event)"></app-user-form>
 </div>
 <div>
     <!-- user listing component with parent child communication -->

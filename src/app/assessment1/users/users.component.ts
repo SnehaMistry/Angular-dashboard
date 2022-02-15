@@ -65,6 +65,21 @@ export class UsersComponent implements OnInit {
     });  
   }
 
+  public updateUserDetail(user :User)
+  {
+    debugger;
+    this.userservice.updateUser(user).subscribe({
+      next : v => {
+        if(v.length > 0)
+        {
+          this.isNewUserAdd = false; 
+          alert("form submiited successfully");
+        }
+        
+      }
+    });  
+  }
+
   //method for get all the user data from user
   public getUserData()
   {

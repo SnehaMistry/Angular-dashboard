@@ -20,7 +20,7 @@
                     <!-- end -->
                 </div>
                 <div class="form-control-div">
-                    <div>
+                    <div class="mb-3">
                         <label for="lastName" class="disable">LastName</label>
                         <input type="text" class="inputText" id="lastName" formControlName="lastName"
                             placeholder="Last Name" />
@@ -54,8 +54,8 @@
                         <!-- end -->
                     </div>
                 </div>
-                <div>
-                    <div>
+                <div class="form-control-div">
+                    <div class="mb-3">
                         <label for="email" class="disable">Email</label>
                         <input type="email" class="inputText" id="email" formControlName="email" placeholder="Email" />
                         <!-- validation for email input -->
@@ -72,7 +72,7 @@
                     <div>
                         <label for="office" class="disable">office</label>
                         <select class="inputText" formControlName="office">
-                            <option [value]="0" disabled selected>Select office</option>
+                            <option [value]="0" selected disabled>All</option>
                             <option [value]="office.id" *ngFor="let office of offices">{{office.name}}</option>
                         </select>
                         <!-- office validation -->
@@ -85,7 +85,7 @@
                         <!-- end -->
                     </div>
                 </div>
-                <div>
+                <div class="form-control-div">
                     <label for="contactno" class="disable">Primary contact No</label>
                     <input type="text" class="inputText" id="contactno" formControlName="contactno"
                         placeholder="Primary Contact Number" />
