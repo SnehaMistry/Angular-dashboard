@@ -1,12 +1,23 @@
 <div>
-    <!-- add header of the page -->
-    <app-header></app-header>
+    <div class="form-header">
+        <div>
+            <span>Users</span>
+        </div>
+        <div>
+            <label for="client-dropdown">Client: </label>
+            <select name="clientName" class="select-op">
+                <option [value]="0" selected>All</option>
+                <option [value]="client.id" *ngFor="let client of clientnameOptions;">{{client.name}}</option>
+            </select>
+            <button class="new-user-btn" (click)="loadNewuserForm()">+ New User</button>
+        </div>
+    </div>
 </div>
 <div>
     <!-- user form compnent with parent child communication -->
-    <app-user-form [clientNames]="clientnameOptions" [offices]="OfficeOptions" (createUser)="saveUserDetail($event)"></app-user-form>
+    <app-user-form *ngIf="isNewUserAdd === true" [clientNames]="clientnameOptions" [offices]="OfficeOptions"  [editToUser]="edituser" (createUser)="saveUserDetail($event)"></app-user-form>
 </div>
 <div>
     <!-- user listing component with parent child communication -->
-    <app-user-listing [userList]="UserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions"></app-user-listing>
+    <app-user-listing [userList]="UserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (userId)="editUserDetails($event)"></app-user-listing>
 </div>

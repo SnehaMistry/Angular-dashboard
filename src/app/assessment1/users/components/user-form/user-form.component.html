@@ -1,20 +1,7 @@
 <section>
-    <div class="form-header">
-        <div>
-            <span>Users</span>
-        </div>
-        <div>
-            <label for="client-dropdown">Client: </label>
-            <select name="clientName" class="select-op">
-                <option [value]="0" selected>All</option>
-                <option [value]="client.id" *ngFor="let client of clientNames;">{{client.name}}</option>
-            </select>
-            <button class="new-user-btn" (click)="loadNewuserForm()">+ New User</button>
-        </div>
-    </div>
     <div>
         <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onUserSave()">
-            <div class="user-form" *ngIf="isNewUserAdd === true;" [formGroup]="userForm">
+            <div class="user-form" [formGroup]="userForm">
                 <div class="form-control-div">
                     <input type="text" class="inputText" id="firstName" formControlName="firstName"
                         placeholder="First Name">
@@ -114,7 +101,7 @@
                     <!-- end -->
                 </div>
             </div>
-            <div class="form-btn" *ngIf="isNewUserAdd === true;">
+            <div class="form-btn">
                 <button type="button" class="bttn btn-black" (click)="resetForm()"><i class="fa fa-close"></i>
                     Cancel</button>
                 <button class="bttn btn-blue" type="submit" [disabled]="!userForm.valid"><i class="fas fa-save"></i>

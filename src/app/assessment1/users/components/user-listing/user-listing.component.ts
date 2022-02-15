@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Client, Office, User } from '../../models/user.model';
 
 @Component({
@@ -13,9 +13,14 @@ export class UserListingComponent implements OnInit {
   @Input() userList : User[];
   @Input() clientNames: Client[];
   @Input() offices: Office[];
-
+  @Output() userId : EventEmitter<number> = new EventEmitter<number>(); 
+  tempIDSelect : number;  
   ngOnInit(): void {
-    console.log(this.userList);
+  }
+
+  public editform(userid : number)
+  {
+      this.userId.emit(userid);
   }
 
 }

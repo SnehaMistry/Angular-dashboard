@@ -10,7 +10,6 @@ export class ClientPipe implements PipeTransform {
 
     if(client.id == value)
     {
-      console.log(value);
       return client.name;
     }
     else{

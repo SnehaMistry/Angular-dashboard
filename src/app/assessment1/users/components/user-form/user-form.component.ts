@@ -9,7 +9,6 @@ import { Client, Office, User } from '../../models/user.model';
 })
 export class UserFormComponent implements OnInit {
 
-  public isNewUserAdd : boolean = false;
   public userForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder) { }
@@ -17,15 +16,22 @@ export class UserFormComponent implements OnInit {
   @Input() clientNames: Client[];
   @Input() offices: Office[];
   @Output() createUser: EventEmitter<User> = new EventEmitter<User>();
+  @Input() editToUser : User;
 
   ngOnInit(): void {
     this.buildUserForm();
-
+    this.editFormUser();
   }
 
-  public loadNewuserForm()
+  public ngOnChanges()
   {
-    this.isNewUserAdd = true;
+    if(this.editToUser != undefined)
+    {
+      this.editFormUser();
+    }
+    else{
+      console.log('hi');
+    }
   }
 
   public buildUserForm() {
@@ -45,9 +51,19 @@ export class UserFormComponent implements OnInit {
      if(this.userForm.valid)
      {
        this.createUser.emit(this.userForm.value);
-       this.isNewUserAdd = false;
        this.resetForm();
      }
+  }
+
+  private editFormUser()
+  {
+    if(this.editToUser != undefined )
+    {
+      this.userForm.patchValue(this.editToUser);
+    }
+    else{
+      console.log("undefined");
+    }
   }
   
   get formControl(){

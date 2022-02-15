@@ -19,15 +19,32 @@
                 </td>
             </tr>
             <ng-template #listrecords> 
-                <tr class="text-center" *ngFor="let user of userList">
-                    {{user.clientName}}
+                <tr class="text-center" *ngFor="let user of userList; let i = index">
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>
-                    <td>{{user.clientName}}</td>
+                    <td><span *ngFor="let client of clientNames">{{user.clientName | clientpipe : client}}</span></td>
                     <td>{{user.email}}</td>
                     <td><span *ngFor="let of of offices">{{user.office | officepipe : of}}</span></td>
                     <td>{{user.contactno}}</td>
-                    <td></td>
+                    <td class="model-td">
+                        <button type="button" class="font-black btn-trans" data-bs-toggle="modal" data-bs-target="#myModal" (click)="tempIDSelect=user.id">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog">
+                              <div class="modal-content" >
+                          
+                                <div class="modal-link">
+                                    <a (click)="editform(tempIDSelect)"><i class="fas fa-edit"></i> Edit</a>
+                                </div>
+                                <div class="modal-link">
+                                    <a href=""><i class="fas fa-light fa-trash"></i> Delete </a>
+                                </div>
+                          
+                              </div>
+                            </div>
+                          </div>
+                    </td>
                 </tr>
             </ng-template>
         </tbody>

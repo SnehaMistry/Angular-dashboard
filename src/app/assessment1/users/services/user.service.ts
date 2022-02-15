@@ -32,4 +32,19 @@ export class UserService {
   {
     return this.http.get<User[]>(`${this.apilink}/users`);
   }
+
+  getByUserId(userId : number) : Observable<User>
+  {
+    return this.http.get<User>(`${this.apilink}/users/${userId}`);
+  }
+
+  updateEmployee(userDetails : User) : Observable<User>
+  {
+    return this.http.put<User>(`${this.apilink}/users/${userDetails.id}`, userDetails);
+  }
+
+  deleteEmployeeDetail(userId : number) : Observable<User>
+  {
+    return this.http.delete<User>(`${this.apilink}/users/${userId}`);
+  }
 }

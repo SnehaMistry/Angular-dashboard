@@ -18,6 +18,9 @@ html{
 body{
   line-height: 1.6;
 }
+.flex-full-width{
+  flex-grow: 1;
+}
 .container{
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
   background-repeat: no-repeat;
@@ -307,4 +310,35 @@ input:not(:focus):valid ~ .floating-label{
   td,th{
     padding: 8px;
   }
+}
+.font-black{
+  color: black;
+}
+.btn-trans{
+  background-color: transparent;
+  border: none;
+}
+.modal-backdrop.show{
+  opacity: 0;
+}
+.modal{
+    position: absolute;
+    overflow: visible;
+}
+.modal-content{
+  position: absolute;
+  top: -3px;
+  right: 61px;
+}
+.modal-body {
+  padding: 0rem;
+}
+.modal-link{
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  padding: 0.5rem;
+}
+.modal-link a{
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Client, Office, User } from './models/user.model';
 import { UserService } from './services/user.service';
 
@@ -12,12 +12,20 @@ export class UsersComponent implements OnInit {
   public clientnameOptions: Client[];
   public OfficeOptions: Office[];
   public UserList: User[];
+  public edituser : User;
+  public isNewUserAdd : boolean = false;
+
   constructor(private userservice : UserService) { }
 
   ngOnInit(): void {
     this.getClientNames();
     this.getOffices();
-    this.getUserData();
+    this.getUserData();    
+  }
+
+  public loadNewuserForm()
+  {
+    this.isNewUserAdd = true;
   }
 
   // Get the client data from the json server
@@ -49,6 +57,7 @@ export class UsersComponent implements OnInit {
       next : v => {
         if(v.length > 0)
         {
+          this.isNewUserAdd = false; 
           alert("form submiited successfully");
         }
         
@@ -64,5 +73,18 @@ export class UsersComponent implements OnInit {
       this.UserList = users;
       }
   });
+  }
+
+  public editUserDetails(userid : number)
+  {
+    if(userid > 0)
+    {
+      this.userservice.getByUserId(userid).subscribe(response =>{
+        this.edituser = response;
+        this.loadNewuserForm();
+      }
+       
+      );
+    }
   }
 }
