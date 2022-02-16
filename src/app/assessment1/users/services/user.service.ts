@@ -23,9 +23,9 @@ export class UserService {
     return this.http.get<Office[]>(`${this.apilink}/office`);
   }
 
-  public saveUsers(user : User) : Observable<User[]>
+  public saveUsers(user : User) : Observable<User>
   {
-    return this.http.post<User[]>(`${this.apilink}/users`, user);
+    return this.http.post<User>(`${this.apilink}/users`, user);
   }
 
   public getAllUsers()
@@ -38,13 +38,14 @@ export class UserService {
     return this.http.get<User>(`${this.apilink}/users/${userId}`);
   }
 
-  updateUser(userDetails : User) : Observable<User[]>
+  updateUser(userDetails : User) : Observable<User>
   {
-    return this.http.put<User[]>(`${this.apilink}/users/${userDetails.id}`, userDetails);
+    return this.http.put<User>(`${this.apilink}/users/${userDetails.id}`, userDetails);
   }
 
   deleteUserDetail(userId : number) : Observable<User>
   {
+    debugger;
     return this.http.delete<User>(`${this.apilink}/users/${userId}`);
   }
 }

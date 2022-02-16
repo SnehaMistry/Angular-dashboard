@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { isEmpty } from 'rxjs';
 import { Client, Office, User } from './models/user.model';
 import { UserService } from './services/user.service';
 
@@ -15,7 +17,7 @@ export class UsersComponent implements OnInit {
   public edituser : User;
   public isNewUserAdd : boolean = false;
 
-  constructor(private userservice : UserService) { }
+  constructor(private userservice : UserService, private routes: Router) { }
 
   ngOnInit(): void {
     this.getClientNames();
@@ -55,25 +57,24 @@ export class UsersComponent implements OnInit {
   {
     this.userservice.saveUsers(user).subscribe({
       next : v => {
-        if(v.length > 0)
+        console.log(v);
+        if(v)
         {
           this.isNewUserAdd = false; 
-          alert("form submiited successfully");
-        }
-        
+          this.getUserData();
+        }        
       }
     });  
   }
 
   public updateUserDetail(user :User)
   {
-    debugger;
     this.userservice.updateUser(user).subscribe({
       next : v => {
-        if(v.length > 0)
+        if(v)
         {
           this.isNewUserAdd = false; 
-          alert("form submiited successfully");
+          this.getUserData();
         }
         
       }
@@ -96,7 +97,26 @@ export class UsersComponent implements OnInit {
     {
       this.userservice.getByUserId(userid).subscribe(response =>{
         this.edituser = response;
-        this.loadNewuserForm();
+        if(this.edituser)
+        {
+          this.loadNewuserForm();
+        }
+      }
+       
+      );
+    }
+  }
+
+  public deleteUserDetails(userid : number)
+  {
+    console.log(userid);
+    if(userid > 0)
+    {
+      this.userservice.deleteUserDetail(userid).subscribe(response =>{
+        if(response)
+        {
+          this.getUserData();
+        }
       }
        
       );

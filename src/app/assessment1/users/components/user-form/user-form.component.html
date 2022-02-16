@@ -1,6 +1,6 @@
 <section>
     <div>
-        <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onUserSave()">
+        <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onUserSave()" autocomplete="off">
             <div class="user-form" [formGroup]="userForm">
                 <div class="form-control-div">
                     <input type="text" class="inputText" id="firstName" formControlName="firstName"
@@ -13,7 +13,7 @@
                             is Required
                         </span>
                         <span
-                            *ngIf="(formControl['firstName']?.touched) && formControl['firstName'].errors?.['pattern']">Firstname
+                            *ngIf="(formControl['firstName']?.dirty) && formControl['firstName'].errors?.['pattern']">Firstname
                             should only in character.
                         </span>
                     </span>
@@ -31,7 +31,7 @@
                                 is Required
                             </span>
                             <span
-                                *ngIf="(formControl['firstName']?.touched) && formControl['lastName'].errors?.['pattern']">Lastname
+                                *ngIf="(formControl['lastName']?.dirty) && formControl['lastName'].errors?.['pattern']">Lastname
                                 should only in character
                             </span>
                         </span>

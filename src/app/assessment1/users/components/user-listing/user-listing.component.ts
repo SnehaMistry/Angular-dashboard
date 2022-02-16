@@ -13,14 +13,21 @@ export class UserListingComponent implements OnInit {
   @Input() userList : User[];
   @Input() clientNames: Client[];
   @Input() offices: Office[];
-  @Output() userId : EventEmitter<number> = new EventEmitter<number>(); 
+  @Output() editId : EventEmitter<number> = new EventEmitter<number>(); 
+  @Output() deleteId : EventEmitter<number> = new EventEmitter<number>(); 
   tempIDSelect : number;  
   ngOnInit(): void {
   }
 
   public editform(userid : number)
   {
-      this.userId.emit(userid);
+      this.editId.emit(userid);
+  }
+
+  public deleteform(userid : number)
+  {
+    debugger;
+    this.deleteId.emit(userid);
   }
 
 }

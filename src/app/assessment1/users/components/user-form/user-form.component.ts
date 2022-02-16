@@ -30,9 +30,6 @@ export class UserFormComponent implements OnInit {
     {
       this.editFormUser();
     }
-    else{
-      console.log('hi');
-    }
   }
 
   public buildUserForm() {
@@ -57,7 +54,6 @@ export class UserFormComponent implements OnInit {
         this.resetForm();
        }
        else{
-         console.log("hi");
         this.updateUser.emit(this.userForm.value);
         this.resetForm();
        }
@@ -69,10 +65,7 @@ export class UserFormComponent implements OnInit {
   {
     if(this.editToUser != undefined )
     {
-      this.userForm.patchValue(this.editToUser);
-    }
-    else{
-      console.log("undefined");
+      this.userForm?.patchValue(this.editToUser);
     }
   }
   

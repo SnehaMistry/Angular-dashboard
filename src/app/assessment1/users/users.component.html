@@ -19,5 +19,5 @@
 </div>
 <div>
     <!-- user listing component with parent child communication -->
-    <app-user-listing [userList]="UserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (userId)="editUserDetails($event)"></app-user-listing>
+    <app-user-listing [userList]="UserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (editId)="editUserDetails($event)" (deleteId)="deleteUserDetails($event)"></app-user-listing>
 </div>
