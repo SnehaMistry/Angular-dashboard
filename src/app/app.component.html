@@ -1,8 +1,11 @@
-<div class="d-flex app-container">
+<div class="dis-flex app-container">
+  <label for="toggle" id="menu-icon"><i class="fa fa-bars"></i></label>
+  <input type="checkbox" id="toggle">
   <div class="sidebar">
+    
     <app-sidebar></app-sidebar>
   </div>
-  <div class="p-5 flex-full-width">
+  <div class="p-2 flex-full-width">
     <router-outlet></router-outlet>
   </div>
 </div>

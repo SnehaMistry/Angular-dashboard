@@ -14,8 +14,10 @@ export class UsersComponent implements OnInit {
   public clientnameOptions: Client[];
   public OfficeOptions: Office[];
   public UserList: User[];
+  public tempUserList : User[];
   public edituser : User;
   public isNewUserAdd : boolean = false;
+  public selectedOption : number;
 
   constructor(private userservice : UserService, private routes: Router) { }
 
@@ -87,14 +89,17 @@ export class UsersComponent implements OnInit {
     this.userservice.getAllUsers().subscribe({
       next : users => {
       this.UserList = users;
+      this.tempUserList = users;
       }
   });
   }
 
   public editUserDetails(userid : number)
   {
+    debugger;
     if(userid > 0)
     {
+      
       this.userservice.getByUserId(userid).subscribe(response =>{
         this.edituser = response;
         if(this.edituser)
@@ -121,5 +126,20 @@ export class UsersComponent implements OnInit {
        
       );
     }
+  }
+
+  public filterClient()
+  {
+
+    // this.getUserData();
+    if(this.selectedOption == 0)
+    {
+      this.tempUserList = this.UserList;
+    }
+    else{
+      this.tempUserList = this.UserList.filter( client => client.clientName == this.selectedOption);
+    }
+
+    this.userservice.sendUserData(this.tempUserList);
   }
 }

@@ -27,7 +27,7 @@
                         <!-- validation for Lastname input -->
                         <span class="error">
                             <span
-                                *ngIf="(formControl['lastName']?.touched) && formControl['lastName'].errors?.['required']">Lastname
+                                *ngIf="(formControl['lastName']?.touched) && formControl['lastName'].value?.['required']">Lastname
                                 is Required
                             </span>
                             <span

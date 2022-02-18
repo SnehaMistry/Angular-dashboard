@@ -1,14 +1,15 @@
 <div>
     <div class="form-header">
         <div>
-            <span>Users</span>
-        </div>
-        <div>
-            <label for="client-dropdown">Client: </label>
-            <select name="clientName" class="select-op">
+            <span><h1>Users</h1></span>
+            <label for="client-dropdown">Client:</label>
+            <select name="clientName" class="select-op" [(ngModel)]="selectedOption" (change)="filterClient()">
                 <option [value]="0" selected>All</option>
                 <option [value]="client.id" *ngFor="let client of clientnameOptions;">{{client.name}}</option>
             </select>
+        </div>
+        <div>
+           
             <button class="new-user-btn" (click)="loadNewuserForm()">+ New User</button>
         </div>
     </div>
@@ -19,5 +20,5 @@
 </div>
 <div>
     <!-- user listing component with parent child communication -->
-    <app-user-listing [userList]="UserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (editId)="editUserDetails($event)" (deleteId)="deleteUserDetails($event)"></app-user-listing>
+    <app-user-listing [userList]="tempUserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (editId)="editUserDetails($event)" (deleteId)="deleteUserDetails($event)"></app-user-listing>
 </div>

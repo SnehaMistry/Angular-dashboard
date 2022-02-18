@@ -6,7 +6,7 @@ import { UsersComponent } from './users.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListingComponent } from './components/user-listing/user-listing.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfficePipe } from './Pipes/office.pipe';
 import { ClientPipe } from './Pipes/client.pipe';
 
@@ -18,12 +18,13 @@ import { ClientPipe } from './Pipes/client.pipe';
     UserFormComponent,
     UserListingComponent,
     OfficePipe,
-    ClientPipe
+    ClientPipe,
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UsersModule { }

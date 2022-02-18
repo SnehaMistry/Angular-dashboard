@@ -2,51 +2,44 @@
 <div>
     <table class="table-container">
         <thead>
-            <tr class="text-center">
-                <th>FIRSTNAME</th>
-                <th>LASTNAME</th>
+            <tr class="text-center bottom-row">
+                <th>#</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
                 <th>CLIENT NAME</th>
                 <th>EMAIL</th>
                 <th>OFFICE</th>
                 <th>CONTACT NUMBER</th> 
-                <th>Action</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr class="text-center" *ngIf="!userList; else listrecords">
-                <td colspan="7">
+            <tr class="text-center bottom-row" *ngIf="length <= 0; else listrecords">
+                <td colspan="8">
                     No record Found
                 </td>
             </tr>
             <ng-template #listrecords> 
-                <tr class="text-center" *ngFor="let user of userList; let i = index">
+                <tr class="text-center bottom-row" *ngFor="let user of userList; let i = index">
+                    <td><input type="checkbox" name="" id=""></td>
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>
                     <td><span *ngFor="let client of clientNames">{{user.clientName | clientpipe : client}}</span></td>
                     <td>{{user.email}}</td>
                     <td><span *ngFor="let of of offices">{{user.office | officepipe : of}}</span></td>
                     <td>{{user.contactno}}</td>
-                    <td class="model-td">
-                        <button type="button" class="font-black btn-trans" data-bs-toggle="modal" data-bs-target="#myModal" (click)="tempIDSelect=user.id">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                        <div class="modal fade" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content" >
-                          
-                                <div class="modal-link">
-                                    <a (click)="editform(tempIDSelect)"><i class="fas fa-edit"></i> Edit</a>
-                                </div>
-                                <div class="modal-link">
-                                    <a href="" (click)="deleteform(tempIDSelect)"><i class="fas fa-light fa-trash"></i> Delete </a>
-                                </div>
-                          
-                              </div>
-                            </div>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item bottom-row" (click)="editform(user.id)"><i class="fa fa-edit"></i> Edit</a></li>
+                              <li><a class="dropdown-item" (click)="deleteform(user.id)"><i class="fa fa-trash-o"></i> Delete</a></li>
+                            </ul>
                           </div>
                     </td>
                 </tr>
             </ng-template>
+            <tr class="last-row"><td>row</td></tr>
         </tbody>
     </table>
 </div>

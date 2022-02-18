@@ -15,12 +15,18 @@ export class UserListingComponent implements OnInit {
   @Input() offices: Office[];
   @Output() editId : EventEmitter<number> = new EventEmitter<number>(); 
   @Output() deleteId : EventEmitter<number> = new EventEmitter<number>(); 
-  tempIDSelect : number;  
+  public length : number;
   ngOnInit(): void {
+  }
+
+  ngOnChanges()
+  {
+    this.length = this.userList?.length;
   }
 
   public editform(userid : number)
   {
+      debugger;
       this.editId.emit(userid);
   }
 
