@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/scss/base/index.scss';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
     margin: 0;
@@ -15,88 +16,7 @@ html, body{
 .dis-flex{
   display: flex;
 }
-.sidebar{
-    background-color: white;
-    height: 100%;
-    flex-shrink: 0;
-    border: 1px solid rgb(220,220,220);
-    padding-top: 2.5rem;
-}
-#menu-icon{
-  color: #3354d9 ;
-  font-size: 2rem;
-  margin: 0 1rem;
-}
-.app-container{
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-.flex-full-width{
-  flex-grow: 1;
-  overflow: auto;
-  background-color: #f7f8fa;
-}
-#menu-icon{
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.menu{
- 
-  height: 100%;
-  .feature-nav{
-    border-bottom: 1px solid rgb(220,220,220);
-    font-size: 1rem;
-     font-family: 'Poppins', sans-serif;
 
-    ul{
-      padding-left: 0;
-
-      & li span{
-        margin-left: 1.1rem;
-      }
-    }
-
-    li:hover{
-      background-color: #eaedfc;
-      border-radius: 0.5rem;
-      color: #7d89c3;
-
-      a{
-        color: #0c48a1
-      }
-    }
-  }
-}
-.navigation{
-  height: 100%;
-  margin-top: 0.5rem;
-  border-top: 1px solid rgb(220,220,220);
-}
-.nav-link{
-  display: flex;
-  padding: 0.5rem 1rem;
-  color: #0d6efd;
-  text-decoration: none;
-  margin: 0.3rem;
-  overflow: hidden;
-  align-items: center;
-  // flex-wrap: wrap;
-  white-space: nowrap;
-}
-.nav-link a{
-  width: 100%;
-  text-decoration: none;
-  color: #838383;
-}
-
-.form-header{
-  padding: 1rem 0.5rem;
-  margin: 1rem;
-  display: flex;
-  justify-content: space-between;
-}
 .new-user-btn{
   background-color: #2f6bff;
   color: #fff;
@@ -107,10 +27,137 @@ html, body{
   box-shadow: 4px 4px 4px #2f6bff;
 }
 
-.user-form{
-  border: 1px thin #f3f2f5;
+/* sidebar component css */
+.sidebar{
+  background-color: $bg-primary;
+  height: 100%;
+  border: $bottom-border;
+  padding-top: 2.5rem;
+}
+#menu-icon{
+color: $blue-font ;
+font-size: 2rem;
+margin: 0 1rem;
+}
+.app-container{
+position: relative;
+height: 100%;
+width: 100%;
+}
+.flex-full-width{
+flex-grow: 1;
+overflow: auto;
+}
+#menu-icon{
+position: absolute;
+top: 0;
+left: 0;
+}
+
+.menu{
+  height: 100%;
+  & .feature-nav{
+    border-bottom: $bottom-border;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+
+    & ul{
+      padding-left: 0;
+
+      & li span{
+        margin-left: 1.1rem;
+      }
+    }
+
+    & li:hover{
+    background-color: #eaedfc;
+    border-radius: 0.5rem;
+    color: #7d89c3;
+
+    & a{
+      color: #0c48a1
+    }
+    }
+  }
+}
+
+.nav-link{
+  display: flex;
+  padding: 0.5rem 1rem;
+  color: #0d6efd;
+  text-decoration: none;
+  margin: 0.3rem;
+  overflow: hidden;
+  align-items: center;
+  white-space: nowrap;
+
+  & a {
+    width: 100%;
+    text-decoration: none;
+    color: #838383;
+  }
+}
+
+
+.navigation{
+  height: 100%;
+  margin-top: 0.5rem;
+  border-top: $bottom-border;
+}
+/* end of sidebar */
+
+
+/*
+start resume builder components css
+*/
+
+.resume-wrapper{
+  background-color:  $bg-main;
+  padding: 2rem;
+  margin: 2rem 3rem;
+  border-top: $resume-border 0.4rem solid;
+  border-bottom: $resume-border 0.4rem solid;
+}
+
+.resume-header{
+   text-align: left;
+   width: 100%;
+   border-bottom: 1px solid $resume-border;
+   border-collapse: collapse;
+
+   #header-name{
+       width: 75%;
+   }
+
+   #header-contact{
+       width: 25%;
+   }
+}
+
+.form-header{
+  @extend .flex;
+  padding: 2rem;
+}
+
+/* end of resume-builder
+*/
+/* start User module css */
+
+.user-wrapper{
+  background-color: $bg-main;
+  height: 100%;
+}
+/* end user module */
+
+.flex{
   display: flex;
   justify-content: space-between;
+}
+
+
+.user-form{
+  @extend .flex;
+  border: 1px thin #f3f2f5;
 }
 
 .disable{
@@ -136,8 +183,8 @@ input:not(:focus):valid ~ .floating-label{
   color: #000000;
   padding-left: 0.5rem;
   width: 100%;
-  border: 1px solid rgb(220,220,220);
   border-radius: 0.5rem;
+  border-color: $light-border;
 }
 
 .select-op{
@@ -145,14 +192,10 @@ input:not(:focus):valid ~ .floating-label{
   height: 2.5rem;
   margin-left: 0.4rem;
   padding-left: 0.5rem;
-  border: 1px solid rgb(220,220,220);
   border-radius: 0.5rem;
+  border-color: $light-border;
 }
 
-.inputText:focus{
-  border: 0.2rem solid rgba(181,191,219,1);
-  box-shadow: 1rem rgba(181,191,219,1);
-}
 .floating-label {
   position: absolute;
   pointer-events: none;
@@ -174,32 +217,32 @@ input:not(:focus):valid ~ .floating-label{
   margin: 0.5rem;
 }
 .btn-black{
-  background-color: #000000;
-  color: #ffffff;
+  background-color: $black;
+  color: $primary-font;
 }
 .btn-blue{
-  background-color: #2f6bff;
-  color: #ffffff;
-  border: 1px solid #2f6bff;
-  box-shadow: 4px 4px 4px #2f6bff;
+  background-color: $primary-btn;
+  color: $primary-font;
+  border: 1px solid $blue-border;
+  box-shadow: 4px 4px 4px $blue-border;
   border-radius: 0.5rem;
 
 }
 .error{
-  color: red;
+  color: $error-font;
 }
 
 .table-container{
   border-collapse: collapse;
   width: 98%;
   margin: 1rem;
-  background-color:#ffffff ;
+  background-color:$bg-primary ;
   border-radius: 0.8rem;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
 
   .bottom-row{
-    border-bottom: 1px solid rgb(220,220,220);
+    border-bottom: $bottom-border;
   }
 
   th{
@@ -214,7 +257,7 @@ input:not(:focus):valid ~ .floating-label{
   visibility: hidden;
 }
 .font-black{
-  color: black;
+  color: $secondary-font;
 }
 .btn-trans{
   background-color: transparent;

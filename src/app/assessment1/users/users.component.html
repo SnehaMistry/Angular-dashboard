@@ -1,4 +1,4 @@
-<div>
+<div class="user-wrapper">
     <div class="form-header">
         <div>
             <span><h1>Users</h1></span>
@@ -13,12 +13,13 @@
             <button class="new-user-btn" (click)="loadNewuserForm()">+ New User</button>
         </div>
     </div>
-</div>
-<div>
-    <!-- user form compnent with parent child communication -->
-    <app-user-form *ngIf="isNewUserAdd === true" [clientNames]="clientnameOptions" [offices]="OfficeOptions"  [editToUser]="edituser" (createUser)="saveUserDetail($event)" (updateUser)="updateUserDetail($event)"></app-user-form>
-</div>
-<div>
-    <!-- user listing component with parent child communication -->
-    <app-user-listing [userList]="tempUserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (editId)="editUserDetails($event)" (deleteId)="deleteUserDetails($event)"></app-user-listing>
+
+    <div>
+        <!-- user form compnent with parent child communication -->
+        <app-user-form *ngIf="isNewUserAdd === true" [clientNames]="clientnameOptions" [offices]="OfficeOptions"  [editToUser]="edituser" (createUser)="saveUserDetail($event)" (updateUser)="updateUserDetail($event)"></app-user-form>
+    </div>
+    <div>
+        <!-- user listing component with parent child communication -->
+        <app-user-listing [userList]="tempUserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (editId)="editUserDetails($event)" (deleteId)="deleteUserDetails($event)"></app-user-listing>
+    </div>
 </div>
