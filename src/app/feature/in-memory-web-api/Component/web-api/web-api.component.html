@@ -1,0 +1,26 @@
+<h2>Top Heroes</h2>
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="new-user-btn" (click)="add(heroName.value); heroName.value=''">
+    Add hero
+  </button>
+</div>
+<div>
+  <table class="table-container table-50-width">
+    <thead>
+      <tr class="text-center">
+        <th>First Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let hero of heroes">
+        <td class="text-center"><a routerLink="detail/{{hero.id}}">{{hero.name}}</a></td>
+        <td><a (click)="delete(hero)" class="btn-link"><i class="fa fa-trash-o"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

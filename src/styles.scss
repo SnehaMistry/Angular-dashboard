@@ -17,7 +17,6 @@ html, body{
 }
 .sidebar{
     background-color: white;
-    width: 15rem;
     height: 100%;
     flex-shrink: 0;
     border: 1px solid rgb(220,220,220);
@@ -48,18 +47,14 @@ html, body{
   height: 100%;
   .feature-nav{
     border-bottom: 1px solid rgb(220,220,220);
-    font-size: 1.3rem;
+    font-size: 1rem;
      font-family: 'Poppins', sans-serif;
-    // font-family: 'Gothic A1', sans-serif;
-    // font-family: 'Inter', sans-serif;
-    // font-family: 'Playfair Display', serif;
-    // font-family: 'Roboto', sans-serif;
 
     ul{
       padding-left: 0;
 
       & li span{
-        margin-left: 12px;
+        margin-left: 1.1rem;
       }
     }
 
@@ -91,7 +86,7 @@ html, body{
   white-space: nowrap;
 }
 .nav-link a{
-  text-align: center;
+  width: 100%;
   text-decoration: none;
   color: #838383;
 }
@@ -183,8 +178,12 @@ input:not(:focus):valid ~ .floating-label{
   color: #ffffff;
 }
 .btn-blue{
-  background-color: #2f55e4;
+  background-color: #2f6bff;
   color: #ffffff;
+  border: 1px solid #2f6bff;
+  box-shadow: 4px 4px 4px #2f6bff;
+  border-radius: 0.5rem;
+
 }
 .error{
   color: red;
@@ -237,6 +236,17 @@ input:not(:focus):valid ~ .floating-label{
 
 #dropdownMenuButton1{
   color: #cbccd0;
+}
+
+.table-50-width{
+  width: 50%;
+}
+.btn-link{
+  cursor: pointer;
+
+  & :hover{
+    color: #2f55e4;
+  }
 }
 
 /* Extra small devices (phones, 600px and down) */
