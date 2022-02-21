@@ -4,19 +4,18 @@
       <tr>
         <th id="header-name">
           <h1>{{resumedetail.fullname}}</h1>
-          <p><em>WEB DESIGNER, DIRECTOR</em></p>
+          <p><em>{{resumedetail.designation}}</em></p>
         </th>
         <th id="header-contact">
           <p><button>Download PDF</button></p>
           <p><a href="mailto:{{resumedetail.email}}">{{resumedetail.email}}</a></p>
-          <p><strong></strong></p>
+          <p><strong>{{resumedetail.phoneno}}</strong></p>
         </th>
       </tr>
     </thead>
   </table>
   <table>
     <tbody>
-      {{resumedetail | json}}
       <tr>
         <td>
           <em>Profile</em>
@@ -62,20 +61,8 @@
         </td>
         <td>
           <table>
-            <tr>
-              <td>XHTML</td>
-              <td>JQUERY</td>
-              <td>OS X</td>
-            </tr>
-            <tr>
-              <td>CSS</td>
-              <td>PHP</td>
-              <td>Windows XP/Vista</td>
-            </tr>
-            <tr>
-              <td>JavaScript</td>
-              <td>PHP</td>
-              <td>Windows XP/Vista</td>
+            <tr *ngFor="let ts of resumedetail.technicalskills; let i= index">
+              <td >{{ts.skill}}</td>
             </tr>
           </table>
         </td>

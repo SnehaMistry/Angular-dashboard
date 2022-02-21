@@ -3,20 +3,26 @@ export interface Resumedetails {
     fullname : string,
     designation : string,
     email : string,
-    technicalskill : {
-        skill : string
-    },
-    experience : {
-        comapnayname : string,
-        compDesignation : string,
-        expDetails : string,
-        startingyear : string,
-        endingyear : string
+    phoneno:number,
+    technicalskills : TechnicalSkill[],
+    experience : Experience[],
+    education : Education[]
+}
 
-    },
-    education : {
-        universityname :string,
-        course : string,
-        percentage : string
-    }
+export interface TechnicalSkill{
+    skill : string;
+}
+
+export interface Experience{
+    comapnayname : string,
+    compDesignation : string,
+    expDetails : string,
+    startingyear : string,
+    endingyear : string
+}
+
+export interface Education{
+    universityname :string,
+    course : string,
+    percentage : string
 }

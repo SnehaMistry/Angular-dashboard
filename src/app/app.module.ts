@@ -21,7 +21,7 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
     ResumeBuilderModule,
     HttpClientModule,
     UsersModule, 
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    // InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [],
   bootstrap: [AppComponent]
