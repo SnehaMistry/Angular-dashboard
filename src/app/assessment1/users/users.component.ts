@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { isEmpty } from 'rxjs';
+import { filter, isEmpty, of, reduce } from 'rxjs';
 import { Client, Office, User } from './models/user.model';
 import { UserService } from './services/user.service';
 
@@ -25,6 +25,13 @@ export class UsersComponent implements OnInit {
     this.getClientNames();
     this.getOffices();
     this.getUserData();    
+
+    let test1 = of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    let case1 = test1.pipe(
+      filter(x => x % 2 === 0),
+      // reduce((acc, one) => acc * one, 1)
+   );
+   case1.subscribe(x => console.log(x));
   }
 
   public loadNewuserForm()

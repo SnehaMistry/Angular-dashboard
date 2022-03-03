@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { buffer, filter, fromEvent, map, Observable, throttleTime } from 'rxjs';
 import { HeroService } from 'src/app/core/Services/hero.service';
 import { Heros } from '../../model/heros.model';
 
