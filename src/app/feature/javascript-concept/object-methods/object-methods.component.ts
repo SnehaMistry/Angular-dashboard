@@ -22,6 +22,7 @@ export class ObjectMethodsComponent implements OnInit {
   keys = Object.keys(this.person);
   objString : string = JSON.stringify(this.person);
 
+  
   constructor() { }
 
   ngOnInit(): void {
