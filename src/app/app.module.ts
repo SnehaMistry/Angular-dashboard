@@ -9,10 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsersModule } from './assessment1/users/users.module';
 import { InMemoryDataService } from './core/Services/in-memory-data.service';
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
+import { ObjectsComponent } from './feature/javascriptConcept/objects/objects.component';
+import { ArraysComponent } from './feature/javascriptConcept/arrays/arrays.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OverlayModule } from '@angular/cdk/overlay';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ObjectsComponent,
+    ArraysComponent
   ],
   imports: [
     BrowserModule,
@@ -20,8 +27,10 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
     CoreModule,
     ResumeBuilderModule,
     HttpClientModule,
-    UsersModule, 
-    // InMemoryWebApiModule.forRoot(InMemoryDataService)
+    UsersModule,
+    BrowserAnimationsModule, 
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

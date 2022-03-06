@@ -1,8 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { isEmpty } from 'rxjs';
+import {Overlay, OverlayConfig, OverlayRef, CdkOverlayOrigin} from '@angular/cdk/overlay';
+import {ComponentPortal} from '@angular/cdk/portal';
 import { Client, Office, User } from './models/user.model';
 import { UserService } from './services/user.service';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @Component({
   selector: 'app-users',
@@ -10,6 +12,8 @@ import { UserService } from './services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+
+  @ViewChild('overlayOrigin') overlayOrigin: CdkOverlayOrigin;
 
   public clientnameOptions: Client[];
   public OfficeOptions: Office[];
@@ -19,7 +23,7 @@ export class UsersComponent implements OnInit {
   public isNewUserAdd : boolean = false;
   public selectedOption : number;
 
-  constructor(private userservice : UserService, private routes: Router) { }
+  constructor(private userservice : UserService, private routes: Router, private overlay : Overlay) { }
 
   ngOnInit(): void {
     this.getClientNames();
@@ -29,7 +33,25 @@ export class UsersComponent implements OnInit {
 
   public loadNewuserForm()
   {
-    this.isNewUserAdd = true;
+    let overlayRef = this.overlay.create();
+    const userFormPortal = new ComponentPortal(UserFormComponent);
+    overlayRef.attach(userFormPortal);
+    console.log(this.overlayOrigin.elementRef);
+
+    let strategy = this.overlay.position().flexibleConnectedTo(this.overlayOrigin.elementRef)
+    .withPositions([
+      {
+        originX: 'start',
+        originY: 'top',
+        overlayX: 'end',
+        overlayY: 'bottom',
+      }
+    ]);   
+
+    overlayRef = this.overlay.create({
+      height: '400px',
+      width: '600px',
+    });
   }
 
   // Get the client data from the json server

@@ -1,9 +1,10 @@
 <section>
-    <div>
+    <div class="m-4">
         <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onUserSave()" autocomplete="off">
-            <div class="user-form" [formGroup]="userForm">
-                <div class="form-control-div">
-                    <input type="text" class="inputText" id="firstName" formControlName="firstName"
+            
+            <div [formGroup]="userForm" class=" d-flex row justify-content-center">
+                <div class="col-md-9 m-3">
+                    <input type="text" class="form-control" id="firstName" formControlName="firstName"
                         placeholder="First Name">
                     <label for="firstName" class="disable floating-label">FirstName</label>
                     <!-- validation for firstname input -->
@@ -19,75 +20,71 @@
                     </span>
                     <!-- end -->
                 </div>
-                <div class="form-control-div">
-                    <div class="mb-3">
-                        <label for="lastName" class="disable">LastName</label>
-                        <input type="text" class="inputText" id="lastName" formControlName="lastName"
-                            placeholder="Last Name" />
-                        <!-- validation for Lastname input -->
-                        <span class="error">
-                            <span
-                                *ngIf="(formControl['lastName']?.touched) && formControl['lastName'].errors?.['required']">Lastname
-                                is Required
-                            </span>
-                            <span
-                                *ngIf="(formControl['lastName']?.dirty) && formControl['lastName'].errors?.['pattern']">Lastname
-                                should only in character
-                            </span>
+                <div class="col-md-9 m-3">
+                    <label for="lastName" class="disable">LastName</label>
+                    <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                        placeholder="Last Name" />
+                    <!-- validation for Lastname input -->
+                    <span class="error">
+                        <span
+                            *ngIf="(formControl['lastName']?.touched) && formControl['lastName'].errors?.['required']">Lastname
+                            is Required
                         </span>
-                        <!-- end -->
-                    </div>
-                    <div>
-                        <label for="clientName" class="disable">Client Name</label>
-                        <select class="inputText" formControlName="clientName">
-                            <option [value]="0" disabled selected>Client Name</option>
-                            <option [value]="client.id" *ngFor="let client of clientNames; let index">{{client.name}}
-                            </option>
-                        </select>
-                        <!-- validation for clientname input -->
-                        <span class="error">
-                            <span
-                                *ngIf="formControl['clientName']?.touched && formControl['clientName'].errors?.['required']">clientname
-                                is Required
-                            </span>
+                        <span
+                            *ngIf="(formControl['lastName']?.dirty) && formControl['lastName'].errors?.['pattern']">Lastname
+                            should only in character
                         </span>
-                        <!-- end -->
-                    </div>
+                    </span>
+                    <!-- end -->
                 </div>
-                <div class="form-control-div">
-                    <div class="mb-3">
-                        <label for="email" class="disable">Email</label>
-                        <input type="email" class="inputText" id="email" formControlName="email" placeholder="Email" />
-                        <!-- validation for email input -->
-                        <span class="error"
-                            *ngIf="(formControl['email'].touched) && formControl['email'].errors?.['required']">
-                            Email is Required
+                <div class="col-md-9 m-3">
+                    <label for="clientName" class="disable">Client Name</label>
+                    <select class="form-control" formControlName="clientName">
+                        <option [value]="0" disabled selected>Client Name</option>
+                        <option [value]="client.id" *ngFor="let client of clientNames; let index">{{client.name}}
+                        </option>
+                    </select>
+                    <!-- validation for clientname input -->
+                    <span class="error">
+                        <span
+                            *ngIf="formControl['clientName']?.touched && formControl['clientName'].errors?.['required']">clientname
+                            is Required
                         </span>
-                        <span *ngIf="formControl['email'].touched && formControl['email'].errors?.['email']"
-                            [ngClass]="{'error': formControl['email'].errors?.['email']}">Please enter valid Email
-                            pattern.
-                        </span>
-                        <!-- end -->
-                    </div>
-                    <div>
-                        <label for="office" class="disable">office</label>
-                        <select class="inputText" formControlName="office">
-                            <option [value]="0" selected disabled>All</option>
-                            <option [value]="office.id" *ngFor="let office of offices">{{office.name}}</option>
-                        </select>
-                        <!-- office validation -->
-                        <span class="error">
-                            <span
-                                *ngIf="formControl['office']?.touched && formControl['office'].errors?.['required']">select office
-                                is Required
-                            </span>
-                        </span>
-                        <!-- end -->
-                    </div>
+                    </span>
+                    <!-- end -->
                 </div>
-                <div class="form-control-div">
+                <div class="col-md-9 m-3">
+                    <label for="email" class="disable">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email" />
+                    <!-- validation for email input -->
+                    <span class="error"
+                        *ngIf="(formControl['email'].touched) && formControl['email'].errors?.['required']">
+                        Email is Required
+                    </span>
+                    <span *ngIf="formControl['email'].touched && formControl['email'].errors?.['email']"
+                        [ngClass]="{'error': formControl['email'].errors?.['email']}">Please enter valid Email
+                        pattern.
+                    </span>
+                    <!-- end -->
+                </div>
+                <div class="col-md-9 m-3">
+                    <label for="office" class="disable">office</label>
+                    <select class="form-control" formControlName="office">
+                        <option [value]="0" selected disabled>All</option>
+                        <option [value]="office.id" *ngFor="let office of offices">{{office.name}}</option>
+                    </select>
+                    <!-- office validation -->
+                    <span class="error">
+                        <span
+                            *ngIf="formControl['office']?.touched && formControl['office'].errors?.['required']">select office
+                            is Required
+                        </span>
+                    </span>
+                    <!-- end -->
+                </div>
+                <div class="col-md-9 m-3">
                     <label for="contactno" class="disable">Primary contact No</label>
-                    <input type="text" class="inputText" id="contactno" formControlName="contactno"
+                    <input type="text" class="form-control" id="contactno" formControlName="contactno"
                         placeholder="Primary Contact Number" />
                     <!-- contact no validation -->
                     <span class="error"
@@ -101,7 +98,7 @@
                     <!-- end -->
                 </div>
             </div>
-            <div class="form-btn">
+            <div class=" d-flex justify-content-between">
                 <button type="button" class="bttn btn-black" (click)="resetForm()"><i class="fa fa-close"></i>
                     Cancel</button>
                 <button class="bttn btn-blue" type="submit" [disabled]="!userForm.valid"><i class="fas fa-save"></i>
@@ -109,4 +106,6 @@
             </div>
         </form>
     </div>
+
+    
 </section>

@@ -9,15 +9,19 @@
             </select>
         </div>
         <div>
-           
-            <button class="new-user-btn" (click)="loadNewuserForm()">+ New User</button>
+            <button class="new-user-btn" cdkOverlayOrigin (click)="loadNewuserForm()">+ New User</button>
+            <ng-template
+                cdkOverlayOrigin
+                [origin] = "overlayOrigin"
+                >
+                </ng-template>
         </div>
     </div>
 
-    <div>
-        <!-- user form compnent with parent child communication -->
+    <!-- <div>
+        user form compnent with parent child communication
         <app-user-form *ngIf="isNewUserAdd === true" [clientNames]="clientnameOptions" [offices]="OfficeOptions"  [editToUser]="edituser" (createUser)="saveUserDetail($event)" (updateUser)="updateUserDetail($event)"></app-user-form>
-    </div>
+    </div> -->
     <div>
         <!-- user listing component with parent child communication -->
         <app-user-listing [userList]="tempUserList" [clientNames]="clientnameOptions" [offices]="OfficeOptions" (editId)="editUserDetails($event)" (deleteId)="deleteUserDetails($event)"></app-user-listing>

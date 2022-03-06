@@ -1,0 +1,19 @@
+<div class="p-4">
+    <h1 class="text-primary">Array Concepts</h1>
+
+    <div class="bg-color p-3">
+        <h3>Array</h3>
+        <pre>{{studentDetails | json}}</pre>
+    </div>
+
+     <div class="bg-color my-3 p-3">
+        <p><em class="my-2">Length of the array is : <strong>{{length}}</strong></em></p>
+        <p><em class="my-2">Array to string : {{arrToString | json}}</em></p>
+         <div class="my-3">
+            <button class="p-2 bg-dark text-light me-3" (click)="add()">Add</button>
+            <button class="p-2 bg-dark text-light me-3" (click)="delete()">Delete</button>
+            <button class="p-2 bg-dark text-light me-3">Edit</button>
+        </div>
+        <p>Array with map which show the student with section 2: </p>
+     </div>
+</div>
