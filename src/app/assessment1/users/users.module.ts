@@ -9,7 +9,7 @@ import { UserListingComponent } from './components/user-listing/user-listing.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfficePipe } from './Pipes/office.pipe';
 import { ClientPipe } from './Pipes/client.pipe';
-
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,10 @@ import { ClientPipe } from './Pipes/client.pipe';
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    OverlayModule
+  ],
+  exports: [
   ]
 })
 export class UsersModule { }

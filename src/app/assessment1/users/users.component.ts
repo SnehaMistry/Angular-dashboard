@@ -1,8 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter, isEmpty, of, reduce } from 'rxjs';
+import {Overlay, OverlayConfig, ConnectionPositionPair} from '@angular/cdk/overlay';
+import {ComponentPortal} from '@angular/cdk/portal';
 import { Client, Office, User } from './models/user.model';
 import { UserService } from './services/user.service';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +12,7 @@ import { UserService } from './services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
+  
   public clientnameOptions: Client[];
   public OfficeOptions: Office[];
   public UserList: User[];
@@ -19,24 +21,43 @@ export class UsersComponent implements OnInit {
   public isNewUserAdd : boolean = false;
   public selectedOption : number;
 
-  constructor(private userservice : UserService, private routes: Router) { }
+  constructor(private userservice : UserService, private routes: Router, private overlay : Overlay) { }
 
   ngOnInit(): void {
     this.getClientNames();
     this.getOffices();
     this.getUserData();    
-
-    let test1 = of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-    let case1 = test1.pipe(
-      filter(x => x % 2 === 0),
-      // reduce((acc, one) => acc * one, 1)
-   );
-   case1.subscribe(x => console.log(x));
   }
+
+  @ViewChild('originOverlay') private _button: ElementRef;
+
 
   public loadNewuserForm()
   {
-    this.isNewUserAdd = true;
+    const positionStrategy = this.overlay
+    .position()
+    .flexibleConnectedTo(this._button)
+    .withPositions([
+      new ConnectionPositionPair(
+        { originX: 'end', originY: 'bottom' },
+        { overlayX: 'end', overlayY: 'top' },
+      )
+    ])
+    .withPush(false);
+
+    let config = new OverlayConfig({
+      hasBackdrop: true,
+      backdropClass: 'false', 
+      width : '500px',
+      positionStrategy
+      // backdropClass: 'cdk-overlay-dark-backdrop',
+    }); 
+
+    let overlayRef = this.overlay.create(config);
+    const userFormPortal = new ComponentPortal(UserFormComponent);
+    overlayRef.attach(userFormPortal);
+
+    
   }
 
   // Get the client data from the json server
@@ -111,7 +132,7 @@ export class UsersComponent implements OnInit {
         this.edituser = response;
         if(this.edituser)
         {
-          this.loadNewuserForm();
+          // this.loadNewuserForm();
         }
       }
        

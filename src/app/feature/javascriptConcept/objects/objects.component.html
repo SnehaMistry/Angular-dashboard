@@ -1,0 +1,32 @@
+<section class="p-4">
+    <h1 class="text-primary">Object Concept</h1>
+    <div class="p-3 bg-color">
+        <pre>{{Person | json}}
+        </pre>
+        <h3>accessing Property of objects</h3>
+        <p>Get person name using <em>'person.name'</em> : {{Person.firstName}}</p>
+        <p>Get person name using <em>'person["name"]'</em> : {{Person["firstName"]}}</p>
+    </div>
+    <div class="my-3 p-2 bg-color">    
+        <h3>Object functions</h3>
+        <p>Person full name <em>'person.fullName()'</em> : ' {{Person.fullName()}}</p>
+    </div>
+    <div class="my-3 p-2 bg-color">
+        <h4>get key value of single object using ngfor loop</h4>
+        <p *ngFor="let x of Person | keyvalue">
+            <span>person key is <b>{{x.key}}</b> value is <b>{{x.value}}</b></span>
+        </p>
+    </div>
+    <div class="my-3 p-2 bg-color">
+        <h4>Object using its values() and keys() method</h4>
+        <div>array values => {{values | json}}</div>
+        <div>array keys => {{keys | json}}</div>
+        
+        <h4 class="mt-4">convert object into string using stringify()</h4>
+        <p>{{objString}}</p>
+    </div>
+
+    <div>
+        
+    </div>
+</section>
