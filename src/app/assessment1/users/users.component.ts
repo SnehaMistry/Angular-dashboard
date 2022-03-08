@@ -46,18 +46,20 @@ export class UsersComponent implements OnInit {
     .withPush(false);
 
     let config = new OverlayConfig({
-      hasBackdrop: true,
       backdropClass: 'false', 
       width : '500px',
       positionStrategy
       // backdropClass: 'cdk-overlay-dark-backdrop',
     }); 
 
-    let overlayRef = this.overlay.create(config);
+    var overlayRef = this.overlay.create(config);
     const userFormPortal = new ComponentPortal(UserFormComponent);
-    overlayRef.attach(userFormPortal);
+    const componentRef = overlayRef.attach(userFormPortal);
 
-    
+    componentRef.instance.formClose.subscribe(() => {
+      overlayRef.detach();
+    });
+
   }
 
   // Get the client data from the json server

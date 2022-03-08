@@ -69,6 +69,7 @@ export class ArraysComponent implements OnInit {
   ngOnInit(): void {
     this.length = this.studentDetails.length;
     this.sectionStudent = this.sectionstudent('Section 1');
+    this.concatString();
   }
 
   public getStudents()

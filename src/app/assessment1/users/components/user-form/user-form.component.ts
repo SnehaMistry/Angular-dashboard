@@ -17,7 +17,8 @@ export class UserFormComponent implements OnInit {
   @Input() offices: Office[];
   @Output() createUser: EventEmitter<User> = new EventEmitter<User>();
   @Output() updateUser: EventEmitter<User> = new EventEmitter<User>();
-  @Input() editToUser : User;
+  @Input() editToUser: User;
+  @Output() formClose: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   ngOnInit(): void {
     this.buildUserForm();
@@ -51,11 +52,11 @@ export class UserFormComponent implements OnInit {
        if(!this.userForm.value.id)
        {
         this.createUser.emit(this.userForm.value);
-        this.resetForm();
+        this.closeForm();
        }
        else{
         this.updateUser.emit(this.userForm.value);
-        this.resetForm();
+        this.closeForm();
        }
        
      }
@@ -73,7 +74,7 @@ export class UserFormComponent implements OnInit {
     return this.userForm.controls;
   }
 
-  resetForm(){
-    this.userForm.reset();
+  closeForm(){
+      this.formClose.emit(true);
   }
 }

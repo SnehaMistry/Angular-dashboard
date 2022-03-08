@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACL,QAAQ,EAAE,QAAQ;CACrB;;AACD,AAAA,eAAe,AAAA,KAAK,CAAA;EAChB,OAAO,EAAE,YAAY;CACxB",
+    "sources": [
+        "../../src/app/assessment1/users/components/user-listing/user-listing.component.scss"
+    ],
+    "names": [],
+    "file": "user-listing.component.css"
+}

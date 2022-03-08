@@ -29,11 +29,22 @@
                     <td><span *ngFor="let of of offices">{{user.office | officepipe : of}}</span></td>
                     <td>{{user.contactno}}</td>
                     <td>
-                        <div class="dropdown">
+                        <!-- <div class="dropdown">
                             <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                               <li><a class="dropdown-item bottom-row" (click)="editform(user.id)"><i class="fa fa-edit"></i> Edit</a></li>
                               <li><a class="dropdown-item" (click)="deleteform(user.id)"><i class="fa fa-trash-o"></i> Delete</a></li>
+                            </ul>
+                        </div> -->
+
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                           </div>
                     </td>

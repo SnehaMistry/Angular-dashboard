@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AGAA,AAAA,SAAS,CAAC;EACN,gBAAgB,EFEH,OAAO;CEDvB",
+    "sources": [
+        "../../src/assets/scss/base/index.scss",
+        "../../src/assets/scss/base/_colors.scss",
+        "../../src/assets/scss/base/_variable.scss",
+        "../../src/assets/scss/base/_global.scss"
+    ],
+    "names": [],
+    "file": "index.css"
+}
