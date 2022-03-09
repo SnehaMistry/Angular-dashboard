@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./arrays.component.scss']
 })
 export class ArraysComponent implements OnInit {
+ //array declaration
   studentDetails = [
     {
       id: 1,
@@ -45,17 +46,20 @@ export class ArraysComponent implements OnInit {
     }
   ];
 
+
+  //variables for storing the methods output.
   length : number;
   arrToString : string;
-  msg : string;
   arrayFrom : string[];
   arrayOf : string[]
   concat: string
   sectionStudent : object[];
+  keys = [];
+
   constructor() {
-    this.msg  = "welcome";
-    this.arrayFrom = Array.from(this.msg);
-    this.arrayOf = Array.of(this.msg);     
+    var msg  = "welcome";
+    this.arrayFrom = Array.from(msg);
+    this.arrayOf = Array.of(msg,"to arrays");     
     console.log("array using from() method " + this.arrayFrom);
     console.log("array using of() method" + this.arrayOf);
     // console.log(this.studentDetails[0].name.concat(' of array'));
@@ -63,13 +67,16 @@ export class ArraysComponent implements OnInit {
     {
       console.log("Its a array");
     }
-    // this.getStudents();
    }
 
   ngOnInit(): void {
     this.length = this.studentDetails.length;
     this.sectionStudent = this.sectionstudent('Section 1');
     this.concatString();
+    console.log("============ \n Example of copy within")
+    console.log(this.studentDetails.copyWithin(5,0,2));
+
+    console.log(this.studentDetails.every(student => (student.section == 'Section 1' || student.name == "Test Person5")));
   }
 
   public getStudents()
@@ -106,6 +113,7 @@ export class ArraysComponent implements OnInit {
       }
       return stud
     });
+    console.log("Concat the string of id 1");
     console.log(student);
   }
 }

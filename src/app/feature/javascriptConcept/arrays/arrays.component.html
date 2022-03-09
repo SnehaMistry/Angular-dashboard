@@ -1,20 +1,42 @@
 <div class="p-4">
-    <h1 class="text-primary">Array Concepts</h1>
+  <h1 class="text-primary">Array Concepts</h1>
 
-    <div class="bg-color p-3">
-        <h3>Array</h3>
-        <pre>{{studentDetails | json}}</pre>
+  <div class="bg-color p-3">
+    <h3>Array</h3>
+    <pre>{{ studentDetails | json }}</pre>
+  </div>
+
+  <div class="bg-color my-3 p-3">
+    <ul>
+      <li>
+        <em class="my-2"
+          >Length of the array is: <strong>{{ length }}</strong></em
+        >
+      </li>
+      <li>
+          <em class="my-2">array using from() method: {{arrayFrom}}</em>
+      </li>
+      <li>
+        <em class="my-2">array using of() method: {{arrayOf}}</em>
+    </li>
+      <li>
+        <em class="my-2">Array to string: {{ arrToString }}</em>
+      </li>
+      <li>
+        <em class="my-2">concat Array: <span class="text-danger">check console output</span></em>
+      </li>
+      <li>
+        <p>Students whose section is 1 :</p>
+        <pre> {{ sectionStudent | json }} </pre>
+      </li>
+      
+    </ul>
+    <div class="my-3">
+      <button class="p-2 bg-dark text-light me-3" (click)="add()">Add</button>
+      <button class="p-2 bg-dark text-light me-3" (click)="delete()">
+        Delete
+      </button>
+      <button class="p-2 bg-dark text-light me-3">Edit</button>
     </div>
-
-     <div class="bg-color my-3 p-3">
-        <p><em class="my-2">Length of the array is : <strong>{{length}}</strong></em></p>
-        <p><em class="my-2">Array to string : {{arrToString}}</em></p>
-        <p><em class="my-2">concat Array  : {{arrToString | json}}</em></p>
-         <div class="my-3">
-            <button class="p-2 bg-dark text-light me-3" (click)="add()">Add</button>
-            <button class="p-2 bg-dark text-light me-3" (click)="delete()">Delete</button>
-            <button class="p-2 bg-dark text-light me-3">Edit</button>
-        </div>
-        <p>Students whose section is 1 : <pre> {{sectionStudent | json}} </pre>
-     </div>
+  </div>
 </div>

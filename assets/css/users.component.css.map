@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../../src/app/assessment1/users/users.component.scss"
-    ],
-    "names": [],
-    "file": "users.component.css"
-}

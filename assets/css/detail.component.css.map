@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../../src/app/feature/in-memory-web-api/Component/detail/detail.component.scss"
-    ],
-    "names": [],
-    "file": "detail.component.css"
-}

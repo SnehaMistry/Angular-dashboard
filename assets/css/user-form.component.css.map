@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../../src/app/assessment1/users/components/user-form/user-form.component.scss"
-    ],
-    "names": [],
-    "file": "user-form.component.css"
-}
