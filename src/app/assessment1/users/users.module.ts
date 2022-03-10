@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfficePipe } from './Pipes/office.pipe';
 import { ClientPipe } from './Pipes/client.pipe';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     UsersRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    OverlayModule
+    OverlayModule,
+    DragDropModule
   ],
   exports: [
   ]

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Client, Office, User } from '../../models/user.model';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-user-listing',
@@ -34,6 +35,10 @@ export class UserListingComponent implements OnInit {
   {
     debugger;
     this.deleteId.emit(userid);
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.userList, event.previousIndex, event.currentIndex);
   }
 
 }

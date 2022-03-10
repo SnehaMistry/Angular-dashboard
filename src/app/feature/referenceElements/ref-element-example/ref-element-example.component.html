@@ -1,0 +1,7 @@
+<div #myDomeElem>
+  
+</div>
+
+<ul *ngFor="let category of categories;let i = index" #myItemLists>
+    <li (click)="getCategory($event, category, i)">{{ category.name }}</li>
+ </ul>

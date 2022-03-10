@@ -13,14 +13,14 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="text-center bottom-row" *ngIf="length <= 0; else listrecords">
+        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+            <tr class="text-center bottom-row" *ngIf="length <= 0; else listrecords" cdkDragLockAxis="y">
                 <td colspan="8">
                     No record Found
                 </td>
             </tr>
             <ng-template #listrecords> 
-                <tr class="text-center bottom-row" *ngFor="let user of userList; let i = index">
+                <tr class="text-center bottom-row"  cdkDrag *ngFor="let user of userList; let i = index">
                     <td><input type="checkbox" name="" id=""></td>
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>

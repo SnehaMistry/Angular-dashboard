@@ -12,13 +12,15 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { ObjectsComponent } from './feature/javascriptConcept/objects/objects.component';
 import { ArraysComponent } from './feature/javascriptConcept/arrays/arrays.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RefElementExampleComponent } from './feature/referenceElements/ref-element-example/ref-element-example.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ObjectsComponent,
-    ArraysComponent
+    ArraysComponent,
+    RefElementExampleComponent
   ],
   imports: [
     BrowserModule,
