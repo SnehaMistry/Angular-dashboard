@@ -1,4 +1,6 @@
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
+import { count } from 'console';
 
 @Component({
   selector: 'app-arrays',
@@ -6,114 +8,181 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./arrays.component.scss']
 })
 export class ArraysComponent implements OnInit {
- //array declaration
+  //array declaration
   studentDetails = [
     {
       id: 1,
       name: 'Test Person1',
       section: 'Section 1',
-      phoneNumber: '12345678'
+      phoneNumber: '12345678',
+      marks: [30, 40, 50],
+      total: 0
     },
     {
       id: 2,
       name: 'Test Person2',
-      section: 'Section 3',
-      phoneNumber: '521398763'
+      section: 'Section 1',
+      phoneNumber: '521398763',
+      marks: [30, 43, 70],
+      total: 0
     },
     {
       id: 3,
       name: 'Test Person3',
       section: 'Section 2',
-      phoneNumber: '586498763'
+      phoneNumber: '586498763',
+      marks: [36, 44, 59],
+      total: 0
     },
     {
       id: 4,
       name: 'Test Person4',
       section: 'Section 1',
-      phoneNumber: '5235698763'
+      phoneNumber: '5235698763',
+      marks: [30, 49, 53],
+      total: 0
     },
     {
       id: 5,
       name: 'Test Person5',
-      section: 'Section 4',
-      phoneNumber: '5213956763'
+      section: 'Section 3',
+      phoneNumber: '5213956763',
+      marks: [38, 45, 52],
+      total: 0
     },
     {
       id: 6,
       name: 'Test Person6',
-      section: 'Section 2',
-      phoneNumber: '521698763'
+      section: 'Section 1',
+      phoneNumber: '521698763',
+      marks: [42, 84, 60],
+      total: 0
     }
   ];
 
 
   //variables for storing the methods output.
-  length : number;
-  arrToString : string;
-  arrayFrom : string[];
-  arrayOf : string[]
+  length: number;
+  arrToString: string;
+  arrayFrom: string[];
+  arrayOf: string[]
   concat: string
-  sectionStudent : object[];
+  studentresult: object[];
+  studentonly: object;
   keys = [];
 
   constructor() {
-    var msg  = "welcome";
+    var msg = "welcome";
     this.arrayFrom = Array.from(msg);
-    this.arrayOf = Array.of(msg,"to arrays");     
+    this.arrayOf = Array.of(msg, "to arrays");
     console.log("array using from() method " + this.arrayFrom);
     console.log("array using of() method" + this.arrayOf);
     // console.log(this.studentDetails[0].name.concat(' of array'));
-    if(Array.isArray(this.studentDetails))
-    {
+    if (Array.isArray(this.studentDetails)) {
       console.log("Its a array");
     }
-   }
+  }
 
   ngOnInit(): void {
     this.length = this.studentDetails.length;
-    this.sectionStudent = this.sectionstudent('Section 1');
+    this.studentresult = this.sectionstudent('Section 1');
     this.concatString();
     console.log("============ \n Example of copy within")
-    console.log(this.studentDetails.copyWithin(5,0,2));
+    console.log(this.studentDetails.copyWithin(5, 0, 2));
+    console.log("\n ============\n  Example of every() check the section or name of the student is same:" + this.studentDetails.every(student => (student.section == 'Section 1' || student.name.startsWith("Test", 0))));
+    console.log("\n ============\n  Example of some() check the section or name of the student is same:" + this.studentDetails.some(student => (student.section == 'Section 1' && student.name === 'Test')));
+    console.log("Fill method :" + this.arrayFrom.fill('e', 2, 5));
 
-    console.log(this.studentDetails.every(student => (student.section == 'Section 1' || student.name == "Test Person5")));
-  }
+    console.log("Example of Find() check the student section is 1 and who has highest marks:" + this.gethighestStudentFromSection());
 
-  public getStudents()
-  {
-    this.studentDetails.forEach(student => {
-    console.log("Id: "+ student.id + "\nName: " + student.name + "\nsection: " + student.section + "\nPhone No:" + student.phoneNumber);
+    console.log("\n ============\nExample of includes() :" + this.studentDetails.includes(this.studentDetails[1]));
+    console.log("\nExample of indexOf() method: " + this.studentDetails.indexOf(this.studentDetails[3]));
+    console.log("\nExample of join() method: ");
+    this.studentDetails.forEach((stud, index) => {
+      let str = stud.marks.join(' ');
+      console.log(str);
     });
+
+    console.log("\n example of Keys() method: ");
+    this.arrkeys();
+
+    console.log("\nExample of lastIndexof() method: " + this.studentDetails.lastIndexOf(this.studentDetails[0]));
+    console.log("\n Example of map() method: ");
+    this.arrMap();
+
+    console.log(this.studentDetails.reduceRight((acc, student) => {
+      return [student.marks[0] + acc[0], student.marks[1] + acc[1], student.marks[2] + acc[2]]
+    }, [0, 0, 0]));
   }
 
-  public add(){
+  public getStudents() {
+    this.studentDetails.forEach(student => {
+      console.log("Id: " + student.id + "\nName: " + student.name + "\nsection: " + student.section + "\nPhone No:" + student.phoneNumber);
+    });
+
+  }
+
+  public add() {
     let student = {
       id: 7,
-      name : "Test person 7",
+      name: "Test person 7",
       section: "Section 1",
-      phoneNumber : "53487485848"
+      phoneNumber: "53487485848",
+      marks: [84, 96, 30],
+      total: 0
     }
     this.studentDetails.push(student);
   }
 
-  public delete()
-  {
-      this.studentDetails.pop();
+  public delete() {
+    this.studentDetails.pop();
   }
 
-  public sectionstudent(section : string){
-    return  this.studentDetails.filter((student) => student.section === section);
+  public sectionstudent(section: string) {
+    return this.studentDetails.filter((student) => student.section === section);
   }
 
-  public concatString(){
+  public concatString() {
     let student = this.studentDetails.map((stud) => {
-      if(stud.id === 1)
-      {
-          stud.name = stud.name.concat(" hello");
+      if (stud.id === 1) {
+        stud.name = stud.name.concat(" hello");
+
       }
       return stud
     });
     console.log("Concat the string of id 1");
     console.log(student);
+  }
+
+  public gethighestStudentFromSection() {
+    var max = 0, stud;
+    this.studentDetails.filter((student) => {
+      if (student.section == 'Section 1') {
+        student.total = student.marks.reduce((sum, first) => sum + first, 0);
+        if (student.total > max) {
+          max = student.total;
+        }
+      }
+    });
+    console.log("\n ============\nMethod fIndindex() is used to get the element index: " + this.studentDetails.findIndex(stud => stud.total == max));
+    var student = this.studentDetails.find(stud => stud.total == max);
+    console.log(student);
+  }
+
+  public arrkeys() {
+    let iterator = this.studentDetails.keys();
+    for (let key of iterator) {
+      console.log(key);
+    }
+  }
+
+
+  public arrMap() {
+    var stud = this.studentDetails.map(stud => {
+      stud.marks.map((mark, index) => { stud.marks[index] = mark + 10 });
+      return stud;
+    });
+
+    console.log(stud);
   }
 }
