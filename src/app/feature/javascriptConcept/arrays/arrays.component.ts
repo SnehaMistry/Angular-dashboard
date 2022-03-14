@@ -1,6 +1,5 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
-import { count } from 'console';
+
 
 @Component({
   selector: 'app-arrays',
@@ -70,7 +69,8 @@ export class ArraysComponent implements OnInit {
   studentresult: object[];
   studentonly: object;
   keys = [];
-
+  isOpen: boolean[];
+  prevOpen?: number;
   constructor() {
     var msg = "welcome";
     this.arrayFrom = Array.from(msg);
@@ -85,8 +85,14 @@ export class ArraysComponent implements OnInit {
 
   ngOnInit(): void {
     this.length = this.studentDetails.length;
+    this.isOpen = [];
+    for (let i = 0; i <= this.length; i++) {
+      this.isOpen.push(false);
+    }
     this.studentresult = this.sectionstudent('Section 1');
-    this.concatString();
+    this.arrToString = JSON.stringify(this.studentDetails);
+    console.log(this.arrToString);
+    console.log(this.concatString());
     console.log("============ \n Example of copy within")
     console.log(this.studentDetails.copyWithin(5, 0, 2));
     console.log("\n ============\n  Example of every() check the section or name of the student is same:" + this.studentDetails.every(student => (student.section == 'Section 1' || student.name.startsWith("Test", 0))));
@@ -115,23 +121,29 @@ export class ArraysComponent implements OnInit {
     }, [0, 0, 0]));
   }
 
+  public showModal(index : number)
+  {
+      if (this.isOpen[index]) {
+        this.isOpen[index] = false; 
+        this.prevOpen = undefined;
+      } else {
+        this.isOpen[index] = true; 
+        if (this.prevOpen != undefined) {
+          this.isOpen[this.prevOpen] = false;
+        }
+        this.prevOpen = index;
+      }
+  }
+
   public getStudents() {
     this.studentDetails.forEach(student => {
       console.log("Id: " + student.id + "\nName: " + student.name + "\nsection: " + student.section + "\nPhone No:" + student.phoneNumber);
     });
 
   }
-
-  public add() {
-    let student = {
-      id: 7,
-      name: "Test person 7",
-      section: "Section 1",
-      phoneNumber: "53487485848",
-      marks: [84, 96, 30],
-      total: 0
-    }
-    this.studentDetails.push(student);
+ 
+  public AddStudent() {
+    
   }
 
   public delete() {
@@ -143,15 +155,15 @@ export class ArraysComponent implements OnInit {
   }
 
   public concatString() {
-    let student = this.studentDetails.map((stud) => {
-      if (stud.id === 1) {
-        stud.name = stud.name.concat(" hello");
+    // let student = this.studentDetails.map((stud) => {
+    //   let newCopy = JSON.parse(JSON.stringify(stud));
+    //   newCopy.name = (newCopy.id == 1) ? newCopy.name.concat("hello") : newCopy.name
+    //   return newCopy;
+    // });
 
-      }
-      return stud
+    let student = this.studentDetails.map((newCopy) => {
+      return {...newCopy, name: (newCopy.id == 1) ? newCopy.name.concat("hello") : newCopy.name}
     });
-    console.log("Concat the string of id 1");
-    console.log(student);
   }
 
   public gethighestStudentFromSection() {
@@ -185,4 +197,8 @@ export class ArraysComponent implements OnInit {
 
     console.log(stud);
   }
+
+  //overlay for options
+
+  
 }

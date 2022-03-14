@@ -13,6 +13,9 @@ import { ObjectsComponent } from './feature/javascriptConcept/objects/objects.co
 import { ArraysComponent } from './feature/javascriptConcept/arrays/arrays.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RefElementExampleComponent } from './feature/referenceElements/ref-element-example/ref-element-example.component';
+import {OverlayModule} from '@angular/cdk/overlay';
+import { StudentFormComponent } from './feature/javascriptConcept/arrays/student-form/student-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +23,8 @@ import { RefElementExampleComponent } from './feature/referenceElements/ref-elem
     AppComponent,
     ObjectsComponent,
     ArraysComponent,
-    RefElementExampleComponent
+    RefElementExampleComponent,
+    StudentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { RefElementExampleComponent } from './feature/referenceElements/ref-elem
     HttpClientModule,
     UsersModule,
     BrowserAnimationsModule, 
+    ReactiveFormsModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

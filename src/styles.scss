@@ -359,6 +359,23 @@ input:not(:focus):valid ~ .floating-label{
   transition: all 1s ease-in-out;  
 }
 
+
+.action-menu
+{
+  border: 1px solid #dee2e6;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  background-color: white;
+  & .dropdown-item{
+    border-bottom: 1px solid #dee2e6 ;
+  }
+
+  .dropdown-item:last-child(){
+    border-bottom: unset;
+  }
+  
+}
 #dropdownMenuButton1{
   color: #cbccd0;
 }

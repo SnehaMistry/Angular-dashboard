@@ -1,9 +1,51 @@
 <div class="p-4">
-  <h1 class="text-primary">Array Concepts</h1>
-
-  <div class="bg-color p-3">
-    <h3>Array</h3>
-    <pre>{{ studentDetails | json }}</pre>
+  <div class="d-flex">
+    <h1 class="text-primary flex-grow-1">Array Concepts</h1>
+    <button class="btn btn-primary m-2" (click)="AddStudent()">+ Add</button>
+  </div>
+  <div class="p-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Section</th>
+          <th>Phone no</th>
+          <th>Marks</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentDetails; let i = index">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.section }}</td>
+          <td>{{ student.phoneNumber }}</td>
+          <td>{{ student.marks }}</td>
+          <td
+            class="position-relative"
+            (click)="showModal(i)"
+            cdkOverlayOrigin #originOverlay="cdkOverlayOrigin"
+            type="button"
+          >
+            <i class="fa fa-ellipsis-h"></i>
+          </td>
+            <ng-template
+              cdkConnectedOverlay
+              [cdkConnectedOverlayOrigin]="originOverlay"
+              [cdkConnectedOverlayOpen]="isOpen[i]"
+            >
+              <ul class="action-menu">
+                <li><a class="dropdown-item" href="#">Edit</a></li>
+                <li><a class="dropdown-item" href="#">Delete</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Clone</a>
+                </li>
+              </ul>
+            </ng-template>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="bg-color my-3 p-3">
@@ -14,33 +56,33 @@
         >
       </li>
       <li>
-          <em class="my-2">array using from() method: {{arrayFrom}}</em>
+        <em class="my-2">array using from() method: {{ arrayFrom }}</em>
       </li>
       <li>
-        <em class="my-2">array using of() method: {{arrayOf}}</em>
-    </li>
-      <li>
-        <em class="my-2">Array to string: {{ arrToString }}</em>
+        <em class="my-2">array using of() method: {{ arrayOf }}</em>
       </li>
       <li>
-        <em class="my-2">concat Array: <span class="text-danger">check console output</span></em>
+        <em class="my-2"
+          >Array to string:
+          <pre>{{ arrToString }}</pre>
+        </em>
+      </li>
+      <li>
+        <em class="my-2"
+          >concat Array:
+          <span class="text-danger">check console output</span></em
+        >
       </li>
       <li>
         <p>Using Filter() Get Students whose section is 1 :</p>
         <pre> {{ studentresult | json }} </pre>
       </li>
       <li>
-        <p>Using Every method() Check if all the student section is 1 or name is same : </p>
+        <p>
+          Using Every method() Check if all the student section is 1 or name is
+          same :
+        </p>
       </li>
-
-      
     </ul>
-    <div class="my-3">
-      <button class="p-2 bg-dark text-light me-3" (click)="add()">Add</button>
-      <button class="p-2 bg-dark text-light me-3" (click)="delete()">
-        Delete
-      </button>
-      <button class="p-2 bg-dark text-light me-3">Edit</button>
-    </div>
   </div>
 </div>
