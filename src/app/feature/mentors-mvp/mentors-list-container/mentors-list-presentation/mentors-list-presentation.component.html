@@ -1,0 +1,56 @@
+<!-- table for the listing the form data -->
+<div class="table-wrapper">
+  <table class="table-container">
+    <thead>
+      <tr class="text-center bottom-row">
+        <th>#</th>
+        <th>Firstname</th>
+        <th>AGE</th>
+        <th>GENDER</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center bottom-row" *ngIf="length <= 0; else listrecords">
+        <td colspan="8">No record Found</td>
+      </tr>
+      <ng-template #listrecords>
+        <tr
+          class="text-center bottom-row"
+          *ngFor="let user of mentorsList; let i = index"
+        >
+          <td><input type="checkbox" name="" id="" /></td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.gender }}</td>
+          <td
+            class="position-relative"
+            (click)="showModal(i)"
+            cdkOverlayOrigin
+            #originOverlay="cdkOverlayOrigin"
+            type="button"
+          >
+            <i class="fa fa-ellipsis-h"></i>
+          </td>
+          <ng-template
+            cdkConnectedOverlay
+            [cdkConnectedOverlayOrigin]="originOverlay"
+            [cdkConnectedOverlayOpen]="isOpen[i]"
+          >
+            <ul class="action-menu">
+              <li><a class="dropdown-item" href="#">Edit</a></li>
+              <li><a class="dropdown-item" href="#">Delete</a></li>
+              <li>
+                <a class="dropdown-item" href="#">Clone</a>
+              </li>
+            </ul>
+          </ng-template>
+        </tr>
+      </ng-template>
+      <tr class="last-row">
+        <td>row</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- end -->

@@ -54,5 +54,20 @@
       "contactno": "5853565666",
       "office": "2"
     }
+  ],
+
+  "user": [
+    {
+      "id": 2,
+      "firstName": "hinal",
+      "age": 22,
+      "gender": "female"
+    },
+    {
+      "id": 3,
+      "firstName": "viral",
+      "age": 25,
+      "gender": "male"
+    }
   ]
 }
