@@ -9,6 +9,7 @@ import { MentorsFormPresentationComponent } from './mentors-form-container/mento
 import { MentorsListPresentationComponent } from './mentors-list-container/mentors-list-presentation/mentors-list-presentation.component';
 import { MentorsService } from './mentors.service';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
   imports: [
     CommonModule,
     MentorsMvpRoutingModule,
+    ReactiveFormsModule,
     OverlayModule
   ],
   providers:[

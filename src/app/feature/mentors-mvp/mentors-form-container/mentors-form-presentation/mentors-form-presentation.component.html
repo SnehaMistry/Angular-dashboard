@@ -1,1 +1,88 @@
-<p>user-form-presentation works!</p>
+<div class="m-4">
+  <form
+    *ngIf="mentorForm"
+    [formGroup]="mentorForm"
+    (ngSubmit)="mentorSave()"
+    autocomplete="off"
+  >
+    <div [formGroup]="mentorForm" class="d-flex row justify-content-center">
+      <div class="col-md-9 m-3">
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName"
+          placeholder="First Name"
+        />
+        <label for="firstName" class="disable floating-label">FirstName</label>
+        <!-- validation for firstname input -->
+        <span class="error">
+          <span
+            *ngIf="(formControl['firstName']?.touched) && formControl['firstName'].errors?.['required']"
+            >Firstname is Required
+          </span>
+          <span
+            *ngIf="(formControl['firstName']?.dirty) && formControl['firstName'].errors?.['pattern']"
+            >Firstname should only in character.
+          </span>
+        </span>
+        <!-- end -->
+      </div>
+      <div class="col-md-9 m-3">
+        <label for="age" class="disable">Age</label>
+        <input
+          type="text"
+          class="form-control"
+          id="age"
+          formControlName="age"
+          placeholder="Enter your Age.."
+        />
+        <!-- validation for age input -->
+        <span class="error">
+          <span
+            *ngIf="(formControl['age']?.touched) && formControl['age'].errors?.['required']"
+            >age is Required
+          </span>
+          <span
+            *ngIf="(formControl['age']?.dirty) && formControl['age'].errors?.['pattern']"
+            >age should only in number.
+          </span>
+          <span *ngIf="formControl['age'].errors?.['minlength'] || formControl['age'].errors?.['maxlength']">
+            age should only 3 characters.
+          </span>
+        </span>
+        <!-- end -->
+      </div>
+      <div class="col-md-9 m-3">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="radio1" name="gender" value="male" formControlName="gender" />
+          <label class="form-check-label" for="radio1"> Male </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="radio2" name="gender" value="female" formControlName="gender" />
+          <label class="form-check-label" for="radio2" > Female </label>
+        </div>
+
+        <span class="error">
+          <span
+            *ngIf="(formControl['gender']?.touched) && formControl['gender'].errors?.['required']"
+            >gender is Required
+          </span>
+          </span>
+        <!-- end -->
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <button type="button" class="bttn btn-black" (click)="resetForm()">
+        <i class="fa fa-close"></i> Reset
+      </button>
+      <button
+        class="bttn btn-blue"
+        type="submit"
+        [disabled]="!mentorForm.valid"
+      >
+        <i class="fas fa-save"></i> Save
+      </button>
+    </div>
+  </form>
+</div>

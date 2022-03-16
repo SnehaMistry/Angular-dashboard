@@ -13,7 +13,7 @@ export class MentorsService {
 
   public getAllMentors()
   {
-    return this._http.get<Mentors[]>(`${this.apilink}/user`);
+    return this._http.get<Mentors[]>(`${this.apilink}/mentors`);
 
   }
 }

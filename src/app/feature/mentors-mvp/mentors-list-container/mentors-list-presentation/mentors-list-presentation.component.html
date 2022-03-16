@@ -1,6 +1,10 @@
 <!-- table for the listing the form data -->
-<div class="table-wrapper">
-  <table class="table-container">
+<div class="m-2">
+  <button class="btn btn-primary" routerLink="../add">+ ADD</button>
+</div>
+
+<div class="">
+  <table class="table">
     <thead>
       <tr class="text-center bottom-row">
         <th>#</th>
@@ -17,18 +21,17 @@
       <ng-template #listrecords>
         <tr
           class="text-center bottom-row"
-          *ngFor="let user of mentorsList; let i = index"
+          *ngFor="let mentor of mentorsList; let i = index"
         >
           <td><input type="checkbox" name="" id="" /></td>
-          <td>{{ user.firstName }}</td>
-          <td>{{ user.age }}</td>
-          <td>{{ user.gender }}</td>
+          <td>{{ mentor.firstName }}</td>
+          <td>{{ mentor.age }}</td>
+          <td>{{ mentor.gender }}</td>
           <td
             class="position-relative"
             (click)="showModal(i)"
             cdkOverlayOrigin
             #originOverlay="cdkOverlayOrigin"
-            type="button"
           >
             <i class="fa fa-ellipsis-h"></i>
           </td>
@@ -47,9 +50,6 @@
           </ng-template>
         </tr>
       </ng-template>
-      <tr class="last-row">
-        <td>row</td>
-      </tr>
     </tbody>
   </table>
 </div>
