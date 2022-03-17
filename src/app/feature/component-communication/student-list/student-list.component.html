@@ -1,0 +1,23 @@
+<div class="p-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Section</th>
+          <th>Phone no</th>
+          <th>Marks</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentDetails$ | async; let i = index">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.section }}</td>
+          <td>{{ student.phoneNo }}</td>
+          <td>{{ student.marks }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

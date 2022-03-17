@@ -18,7 +18,7 @@ export class MentorsFormPresentationComponent implements OnInit {
   ngOnInit(): void {
     this.mentorForm = this._formService.buildForm();
     this._formService.mentorFromData.subscribe(res => {
-      console.log(res);
+      
     })
   }
 
@@ -27,7 +27,6 @@ export class MentorsFormPresentationComponent implements OnInit {
   {
     if(this.mentorForm.value)
     {
-     
       this._formService.addForm(this.mentorForm);
     }
   }

@@ -1,0 +1,65 @@
+<div [formGroup]="studentForm">
+  <div class="mb-3 col-md-9">
+    <label for="name" class="form-label">Student Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name"/>
+    <div id="nameHelp" class="form-text">Name is require.</div>
+  </div>
+  <div class="mb-3 col-md-9">
+    <label for="name" class="form-label">Student Section</label>
+    <select class="form-select" id="section" formControlName="section">
+      <option selected>Select section</option>
+      <option value="1">Section 1</option>
+      <option value="2">Section 2</option>
+      <option value="3">Section 3</option>
+      <option value="4">Section 4</option>
+    </select>
+    <div id="phonenoHelp" class="form-text">please select the section.</div>
+  </div>
+  <div class="mb-3 col-md-9">
+    <label for="phoneno" class="form-label">Student Mobile NO</label>
+    <input type="text" class="form-control" id="phoneno" formControlName="phoneNo"/>
+    <div id="phonenoHelp" class="form-text">Number is require.</div>
+  </div>
+  <div class="row" formArrayName="marks">
+    <div class="col-md-3">
+      <label for="mark1">Subject 1</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Subject1 marks"
+        id="mark1"
+        formControlName="mark1"
+      />
+    </div>
+    <div class="col-md-3">
+      <label for="mark2">Subject 2</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Subject2 marks"
+        id="mark2"
+        formControlName="mark2"
+      />
+    </div>
+    <div class="col-md-3">
+      <label for="mark3">Subject 3</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Subject3 marks"
+        id="mark3"
+        formControlName="marks3"
+      />
+    </div>
+    </div>
+    <div class="my-3">
+      <button
+        type="submit"
+        (click)="onSubmitStudent()"
+        [disabled]="!studentForm.valid"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </div>
+</div>

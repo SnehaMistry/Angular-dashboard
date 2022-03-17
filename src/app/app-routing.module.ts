@@ -14,6 +14,7 @@ const routes: Routes = [
   {path:"users", loadChildren: () => import('./assessment1/users/users.module').then(m => m.UsersModule)},
   {path:"webapi", loadChildren: () => import('./feature/in-memory-web-api/in-memory-web-api.module').then(m => m.InMemoryWebAPIModule)},
   { path: 'user-mvp', loadChildren: () => import('./feature/mentors-mvp/mentors-mvp.module').then(m => m.MentorsMvpModule) },
+  { path: 'communication', loadChildren: () => import('./feature/component-communication/component-communication.module').then(m => m.ComponentCommunicationModule) },
 
 ];
 
