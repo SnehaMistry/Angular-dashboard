@@ -16,4 +16,20 @@ export class MentorsService {
     return this._http.get<Mentors[]>(`${this.apilink}/mentors`);
 
   }
+
+  public saveMentor(mentor : Mentors){
+    return this._http.post<Mentors>(`${this.apilink}/mentors`,mentor);
+  }
+
+  public deleteMentor(id : number){
+    return this._http.delete<Mentors>(`${this.apilink}/mentors/${id}`);
+  }
+
+  public getByID(id: number){
+    return this._http.get<Mentors>(`${this.apilink}/mentors/${id}`);
+  }
+
+  public editMentor(mentor : Mentors, id : number){
+    return this._http.put<Mentors>(`${this.apilink}/mentors/${id}`, mentor);
+  }
 }

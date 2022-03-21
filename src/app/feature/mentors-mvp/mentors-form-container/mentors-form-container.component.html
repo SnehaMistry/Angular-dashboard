@@ -1,1 +1,4 @@
-<app-mentors-form-presentation></app-mentors-form-presentation>
+<app-mentors-form-presentation 
+    (add)="addMentors($event)" 
+    [editmentor]="editMentorData$ | async"
+    (edit)="EditMentors($event)"></app-mentors-form-presentation>

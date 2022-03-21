@@ -17,6 +17,18 @@ export class MentorsListContainerComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getMentors();
+  }
+
+  public mentorDelete(id: number)
+  {
+    this._mentorService.deleteMentor(id).subscribe((res) => {
+      this.getMentors();
+    })
+  }
+
+  public getMentors()
+  {
     this.mentorsList$ = this._mentorService.getAllMentors();
   }
 

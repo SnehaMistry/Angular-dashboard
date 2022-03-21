@@ -1,5 +1,5 @@
 <!-- table for the listing the form data -->
-<div class="m-2">
+<div class="m-4">
   <button class="btn btn-primary" routerLink="../add">+ ADD</button>
 </div>
 
@@ -41,8 +41,8 @@
             [cdkConnectedOverlayOpen]="isOpen[i]"
           >
             <ul class="action-menu">
-              <li><a class="dropdown-item" href="#">Edit</a></li>
-              <li><a class="dropdown-item" href="#">Delete</a></li>
+              <li><a class="dropdown-item" (click)="editMentor(mentor.id)">Edit</a></li>
+              <li><a class="dropdown-item" (click)="deleteMentor(mentor.id)">Delete</a></li>
               <li>
                 <a class="dropdown-item" href="#">Clone</a>
               </li>

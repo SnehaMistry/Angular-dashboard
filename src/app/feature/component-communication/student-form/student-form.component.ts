@@ -13,13 +13,25 @@ export class StudentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentForm = this._studentService.buildForm();
+    this._studentService.editStudent.subscribe(response => 
+      {
+        this.studentForm.patchValue(response);
+      });
   }
 
   public onSubmitStudent()
   {
     if(this.studentForm.valid)
     {
-      this._studentService.add(this.studentForm.value);
+      if(this.studentForm.value.id === null)
+      {
+        this._studentService.add(this.studentForm.value);
+        this.studentForm.reset();
+      }
+      else{
+        this._studentService.edit(this.studentForm.value);
+        this.studentForm.reset();
+      }
     }
   }
 

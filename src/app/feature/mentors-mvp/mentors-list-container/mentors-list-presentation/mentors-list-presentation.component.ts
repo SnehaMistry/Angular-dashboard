@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Mentors } from 'src/app/feature/mentors-mvp/mentors.model';
+import { MentorsFormPresenterService } from '../../mentors-form-container/mentors-form-presenter/mentors-form-presenter.service';
+import { MentorsListPresenterService } from '../mentors-list-presenter/mentors-list-presenter.service';
 
 @Component({
   selector: 'app-mentors-list-presentation',
@@ -8,6 +11,7 @@ import { Mentors } from 'src/app/feature/mentors-mvp/mentors.model';
 })
 export class MentorsListPresentationComponent implements OnInit {
 
+  @Output() delMentor : EventEmitter<number> = new EventEmitter();
   @Input() public set mentorsList(value : Mentors[] | null){
       if(value){
         this._mentorsList = value;
@@ -22,7 +26,7 @@ export class MentorsListPresentationComponent implements OnInit {
   private _mentorsList !: Mentors[];
   isOpen: boolean[];
   prevOpen?: number;
-  constructor() { }
+  constructor(private _listService: MentorsListPresenterService, private _route: Router) { }
 
   ngOnInit(): void {
     if(this.mentorsList)
@@ -35,6 +39,11 @@ export class MentorsListPresentationComponent implements OnInit {
     for (let i = 0; i <= this.length; i++) {
       this.isOpen.push(false);
     }
+
+    this._listService.deleteMentor$.subscribe((res : number) => {
+      this.delMentor.emit(res);
+    })
+    
   }
 
   public showModal(index : number )
@@ -54,4 +63,13 @@ export class MentorsListPresentationComponent implements OnInit {
     }
   }
 
+  public deleteMentor(id: number)
+  {
+    this._listService.delete(id);
+  }
+
+  public editMentor(id: number)
+  {
+    this._route.navigate([`user-mvp/edit/${id}`]);
+  }
 }

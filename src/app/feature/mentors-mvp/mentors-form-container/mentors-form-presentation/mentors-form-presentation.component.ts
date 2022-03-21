@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Mentors } from '../../mentors.model';
 import { MentorsFormPresenterService } from '../mentors-form-presenter/mentors-form-presenter.service';
 
 @Component({
@@ -11,14 +13,22 @@ import { MentorsFormPresenterService } from '../mentors-form-presenter/mentors-f
 export class MentorsFormPresentationComponent implements OnInit {
 
   mentorForm : FormGroup;
-  @Output() formClose: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private _formService : MentorsFormPresenterService) { }
+  @Input() public set editmentor (value : Mentors | null){
+    if(value)
+    {
+      this.mentorForm.patchValue(value);
+    }
+  }
+  @Output() add: EventEmitter<Mentors> = new EventEmitter<Mentors>();
+  @Output() edit: EventEmitter<Mentors> = new EventEmitter<Mentors>();
+
+  constructor(private _formService : MentorsFormPresenterService, private _route:Router) { }
 
   ngOnInit(): void {
     this.mentorForm = this._formService.buildForm();
-    this._formService.mentorFromData.subscribe(res => {
-      
+    this._formService.mentorFormData$.subscribe(res => {
+      (res.id === null) ? this.add.emit(res) : this.edit.emit(res);
     })
   }
 
@@ -35,8 +45,9 @@ export class MentorsFormPresentationComponent implements OnInit {
     return this.mentorForm.controls;
   }
 
-  resetForm(){
-    this.formClose.emit(true);
+
+  cancelForm(){
+    this._route.navigate([`user-mvp/list`]);
   }
 
 

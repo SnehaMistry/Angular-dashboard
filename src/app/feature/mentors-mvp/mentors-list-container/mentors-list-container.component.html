@@ -1,1 +1,1 @@
-<app-mentors-list-presentation [mentorsList]="mentorsList$ | async"></app-mentors-list-presentation>
+<app-mentors-list-presentation [mentorsList]="mentorsList$ | async" (delMentor)="mentorDelete($event)"></app-mentors-list-presentation>

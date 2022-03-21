@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StudentServiceService } from '../student-service.service';
 import { Student } from '../student.model';
@@ -17,4 +17,13 @@ export class StudentListComponent implements OnInit {
       this.studentDetails$ = this._studentService.studentDetails$;
   }
 
+  public editform(id : number)
+  {
+    this._studentService.editById(id);
+  }
+
+  public deleteform(id : number)
+  {
+    this._studentService.delete(id);
+  }
 }
