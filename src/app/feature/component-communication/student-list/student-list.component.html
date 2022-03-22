@@ -17,7 +17,7 @@
           <td>{{ student.section }}</td>
           <td>{{ student.phoneNo }}</td>
           <td>  
-            {{student.mark1 +","+ student.mark2 +","+ student.mark3}}          
+            {{student.marks | json}}          
           </td>
           <!-- for edit and delete click events -->
           <td><a (click)="editform(student.id)"><i class="fa fa-edit"></i></a></td>

@@ -57,22 +57,10 @@
   ],
   "mentors": [
     {
-      "id": 2,
-      "firstName": "hinal",
-      "age": 22,
-      "gender": "female"
-    },
-    {
       "id": 3,
-      "firstName": "viral",
-      "age": 25,
+      "firstName": "tyfutgj",
+      "age": "432",
       "gender": "male"
-    },
-    {
-      "id": 12,
-      "firstName": "sd",
-      "age": "25",
-      "gender": "female"
     }
   ]
 }

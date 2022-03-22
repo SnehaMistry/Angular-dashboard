@@ -21,9 +21,7 @@ export class StudentServiceService {
       name: 'Test person1',
       section: '1',
       phoneNo: '596555635', 
-      mark1: 20,
-      mark2: 30,
-      mark3: 40
+      marks : [10,20,30]
     };
     this._studentDetails.push(student);
     this.getStudents();
@@ -45,12 +43,7 @@ export class StudentServiceService {
   public edit(student : Student)
   {
     let index = this._studentDetails.findIndex(student => student.id  === student.id);
-    this._studentDetails[index].name = student.name;
-    this._studentDetails[index].section = student.section;
-    this._studentDetails[index].phoneNo = student.phoneNo;
-    this._studentDetails[index].mark1 = student.mark1;
-    this._studentDetails[index].mark2 = student.mark2;
-    this._studentDetails[index].mark3 = student.mark3; 
+    this._studentDetails[index] = {...student}
   }
 
   public editById(id: number)
@@ -75,9 +68,9 @@ export class StudentServiceService {
       name: ['', Validators.required],
       section: ['', Validators.required],
       phoneNo: ['', Validators.required],
-      mark1 : [null],
-      mark2 : [null],
-      mark3 : [null]
+      marks: this._fb.array([
+        [''], [''], ['']
+      ])
     }); 
   }
 }

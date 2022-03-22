@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Mentors } from 'src/app/feature/mentors-mvp/mentors.model';
 import { MentorsFormPresenterService } from '../../mentors-form-container/mentors-form-presenter/mentors-form-presenter.service';
@@ -7,7 +7,8 @@ import { MentorsListPresenterService } from '../mentors-list-presenter/mentors-l
 @Component({
   selector: 'app-mentors-list-presentation',
   templateUrl: './mentors-list-presentation.component.html',
-  styleUrls: ['./mentors-list-presentation.component.scss']
+  styleUrls: ['./mentors-list-presentation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MentorsListPresentationComponent implements OnInit {
 
@@ -45,6 +46,8 @@ export class MentorsListPresentationComponent implements OnInit {
     })
     
   }
+
+ 
 
   public showModal(index : number )
   { 

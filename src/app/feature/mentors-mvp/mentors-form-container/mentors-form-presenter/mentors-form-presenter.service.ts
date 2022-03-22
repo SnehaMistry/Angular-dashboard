@@ -6,13 +6,12 @@ import { Mentors } from '../../mentors.model';
 @Injectable()
 export class MentorsFormPresenterService {
 
-  public mentorFormData$ : Observable<Mentors>;
-  public mentorFromData : Subject<Mentors>;
-  constructor(private _fb: FormBuilder) { 
-    this.mentorFormData$ = new Observable();
-    this.mentorFromData = new Subject();
+  public mentorFormData$ = new Observable<Mentors>();
+  public mentorFromData = new Subject<Mentors>();
 
+  constructor(private _fb: FormBuilder) { 
     this.mentorFormData$ = this.mentorFromData.asObservable();
+
   }
 
   public buildForm(){

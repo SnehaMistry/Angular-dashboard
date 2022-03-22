@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ResumeBuilderRoutingModule } from './resume-builder-routing.module';
 import { ResumeBuilderComponent } from './resume-builder.component';
 import { ResumeComponent } from './componant/resume/resume.component';
-import { ResumeFormComponent } from './componant/resume-form/resume-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ResumeFormComponent } from './componant/resume-form/resume-form.component';;
+import { CoreModule } from 'src/app/core/core.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,9 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ResumeFormComponent
   ],
   imports: [
-    CommonModule,
-    ResumeBuilderRoutingModule,
-    ReactiveFormsModule,
+   SharedModule,
+    ResumeBuilderRoutingModule
   ]
 })
 export class ResumeBuilderModule { }

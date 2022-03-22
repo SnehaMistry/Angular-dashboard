@@ -7,6 +7,7 @@ import { StudentFormComponent } from './student-form/student-form.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentServiceService } from './student-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,9 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     StudentListComponent
   ],
   imports: [
-    CommonModule,
-    ComponentCommunicationRoutingModule,
-    ReactiveFormsModule
+   SharedModule,
+    ComponentCommunicationRoutingModule
+   
   ],
   providers:[
     StudentServiceService
