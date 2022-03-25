@@ -17,9 +17,16 @@ export class MentorsFormPresenterService {
   public buildForm(){
     return this._fb.group({
       id: [],
-      firstName: ['',[Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]],
+      firstname: ['',[Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]],
+      lastname: ['',[Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]],
+      username: ['',[Validators.required, Validators.pattern('^[_A-z0-9.]*((-|\s)*[_A-z0-9.])*$')]],
+      email: ['',[Validators.required, Validators.email]],
       age: [null, Validators.compose([Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(1), Validators.maxLength(3)])],
-      gender: ['', Validators.required]      
+      gender: ['', Validators.required],
+      birthdate: ['',Validators.required],
+      location: ['',[Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]],
+      address: ['',Validators.required],
+      mobilenumber: ['',[Validators.required, Validators.pattern('^[+0-9]*((-|\s)*[+0-9])*$')]],
     })
   }
 

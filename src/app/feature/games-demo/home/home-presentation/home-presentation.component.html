@@ -1,0 +1,43 @@
+<div class="bg-secondary overflow-hidden h-100">
+  <div class="p-3 col-3">
+    <select class="form-select" aria-label="Default select example">
+      <option value="name">Name</option>
+      <option value="-released">Released</option>
+      <option value="-added">Added</option>
+      <option value="-created">Created</option>
+      <option value="-updated">Updated</option>
+      <option value="-rating">Rating</option>
+      <option value="metacritic">Metacritic</option>
+    </select>
+  </div>
+  <div class="px-4 overflow-auto">
+    <div class="row text-light overflow-hidden g-3" >
+      <ng-container *ngFor="let game of games">
+        <div class="col-sm-6 col-md-4 col-xxl-3">
+        <div class="bg-info border border-info rounded-3">
+          <figure class="image-container">
+            <img
+              *ngIf="game.background_image"
+              src="{{ game.background_image }}"
+              alt="thumbnail"
+              class="game-thumbnail"
+            />
+            <p *ngIf="!game.background_image">No image</p>
+          </figure>
+          <div class="pt-5 m-3">
+            <h4 class="fs-lg-4">{{ game.name }}</h4>
+            <div class="d-flex flex-wrap">
+              <figure *ngFor="let gamePlatform of game.parent_platforms">
+                <img 
+                class="platform-icon m-1"
+                src="./assets/images/platforms/{{ gamePlatform.platform.slug }}.svg" 
+                alt="{{gamePlatform.platform.slug}}">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

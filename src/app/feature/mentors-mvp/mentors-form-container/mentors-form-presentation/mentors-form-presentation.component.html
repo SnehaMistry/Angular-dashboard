@@ -10,24 +10,90 @@
         <input
           type="text"
           class="form-control"
-          id="firstName"
-          formControlName="firstName"
+          id="firstname"
+          formControlName="firstname"
           placeholder="First Name"
         />
-        <label for="firstName" class="disable floating-label">FirstName</label>
+        <label for="firstname" class="disable floating-label">FirstName</label>
         <!-- validation for firstname input -->
         <span class="error">
           <span
-            *ngIf="(formControl['firstName']?.touched) && formControl['firstName'].errors?.['required']"
+            *ngIf="(formControl['firstname']?.touched) && formControl['firstname'].errors?.['required']"
             >Firstname is Required
           </span>
           <span
-            *ngIf="(formControl['firstName']?.dirty) && formControl['firstName'].errors?.['pattern']"
+            *ngIf="(formControl['firstname']?.dirty) && formControl['firstname'].errors?.['pattern']"
             >Firstname should only in character.
           </span>
         </span>
         <!-- end -->
       </div>
+      <div class="col-md-6 m-3">
+      <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          formControlName="lastname"
+          placeholder="Last Name"
+        />
+        <label for="lastname" class="disable floating-label">LastName</label>
+        <!-- validation for lastname input -->
+        <span class="error">
+          <span
+            *ngIf="(formControl['lastname']?.touched) && formControl['lastname'].errors?.['required']"
+            >lastname is Required
+          </span>
+          <span
+            *ngIf="(formControl['lastname']?.dirty) && formControl['lastname'].errors?.['pattern']"
+            >LastName should only in character.
+          </span>
+        </span>
+        <!-- end -->
+      </div>
+      <div class="col-md-6 m-3">
+        <input
+            type="text"
+            class="form-control"
+            id="username"
+            formControlName="username"
+            placeholder="Username"
+          />
+          <label for="username" class="disable floating-label">Username</label>
+          <!-- validation for username input -->
+          <span class="error">
+            <span
+              *ngIf="(formControl['username']?.touched) && formControl['username'].errors?.['required']"
+              >username is Required
+            </span>
+            <span
+              *ngIf="(formControl['username']?.dirty) && formControl['username'].errors?.['pattern']"
+              >Username should only Alphnumeric.
+            </span>
+          </span>
+          <!-- end -->
+        </div>
+        <div class="col-md-6 m-3">
+          <input
+              type="text"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              placeholder="email"
+            />
+            <label for="email" class="disable floating-label">Email</label>
+            <!-- validation for Email input -->
+            <span class="error">
+              <span
+                *ngIf="(formControl['email']?.touched) && formControl['email'].errors?.['required']"
+                >Email is Required
+              </span>
+              <span
+                *ngIf="(formControl['email']?.dirty) && formControl['email'].errors?.['email']"
+                >Please enter correct Email
+              </span>
+            </span>
+            <!-- end -->
+          </div>
       <div class="col-md-6 m-3">
         <label for="age" class="disable">Age</label>
         <input
@@ -69,6 +135,84 @@
             >gender is Required
           </span>
           </span>
+        <!-- end -->
+      </div>
+      <div class="col-md-6 m-3">
+        <label for="birthdate" class="disable">Birthdate</label>
+        <input
+          type="date"
+          class="form-control"
+          id="birthdate"
+          formControlName="birthdate"
+        />
+        <!-- validation for birthdate input -->
+        <span class="error">
+          <span
+            *ngIf="(formControl['birthdate']?.touched) && formControl['birthdate'].errors?.['required']"
+            >birthdate is Required
+          </span>
+        </span>
+        <!-- end -->
+      </div>
+      <div class="col-md-6 m-3">
+        <label for="location" class="disable">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          formControlName="location"
+          placeholder="Enter your Location.."
+        />
+        <!-- validation for location input -->
+        <span class="error">
+          <span
+            *ngIf="(formControl['location']?.touched) && formControl['location'].errors?.['required']"
+            >location is Required
+          </span>
+          <span
+            *ngIf="(formControl['location']?.dirty) && formControl['location'].errors?.['pattern']"
+            >location should only in character.
+          </span>
+        </span>
+        <!-- end -->
+      </div>
+      <div class="col-md-6 m-3">
+        <label for="address" class="disable">Address</label>
+        <textarea
+          class="form-control"
+          id="address"
+          formControlName="address"
+          placeholder="Enter your Address.."
+        ></textarea>
+        <!-- validation for address input -->
+        <span class="error">
+          <span
+            *ngIf="(formControl['address']?.touched) && formControl['address'].errors?.['required']"
+            >address is Required
+          </span>
+        </span>
+        <!-- end -->
+      </div>
+      <div class="col-md-6 m-3">
+        <label for="mobilenumber" class="disable">Mobile Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="mobilenumber"
+          formControlName="mobilenumber"
+          placeholder="Enter your Mobilenumber.."
+        />
+        <!-- validation for mobilenumber input -->
+        <span class="error">
+          <span
+            *ngIf="(formControl['mobilenumber']?.touched) && formControl['mobilenumber'].errors?.['required']"
+            >mobilenumber is Required
+          </span>
+          <span
+            *ngIf="(formControl['mobilenumber']?.dirty) && formControl['mobilenumber'].errors?.['pattern']"
+            >Phone Number should only in Number.
+          </span>
+        </span>
         <!-- end -->
       </div>
     </div>

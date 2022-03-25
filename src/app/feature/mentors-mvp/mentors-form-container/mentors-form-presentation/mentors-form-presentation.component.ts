@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Mentors } from '../../mentors.model';
 import { MentorsFormPresenterService } from '../mentors-form-presenter/mentors-form-presenter.service';
 
@@ -12,7 +12,7 @@ import { MentorsFormPresenterService } from '../mentors-form-presenter/mentors-f
 })
 export class MentorsFormPresentationComponent implements OnInit {
 
-  mentorForm : FormGroup;
+  mentorForm : FormGroup
 
   @Input() public set editmentor (value : Mentors | null){
     if(value)
@@ -27,9 +27,11 @@ export class MentorsFormPresentationComponent implements OnInit {
 
   ngOnInit(): void {
     this.mentorForm = this._formService.buildForm();
+   
+
     this._formService.mentorFormData$.subscribe(res => {
       (res.id === null) ? this.add.emit(res) : this.edit.emit(res);
-    })
+    });
   }
 
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BaseURL : "http://localhost:3000"
+  BaseURL : "http://localhost:3000",
+  gamesBaseURL : "https://rawg-video-games-database.p.rapidapi.com/"
 };
 
 /*

@@ -34,26 +34,16 @@ $angular-dashboard-theme: mat.define-light-theme((
 @include mat.all-component-themes($angular-dashboard-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 @import '@angular/cdk/overlay-prebuilt.css';
 @import 'assets/scss/base/index.scss';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-@import '~node_modules/bootstrap/scss/bootstrap';
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
-}
-html, body{
-    font-size: 1rem;
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-}
-.dis-flex{
-  display: flex;
-}
+@import 'assets/scss/vendor/index.scss';
+@import 'assets/scss/component/index.scss';
 
+.filter-container{
+  margin-top: 80px;
+  width: 300px;
+}
 .new-user-btn{
   background-color: #2f6bff;
   color: #fff;
@@ -87,17 +77,13 @@ html, body{
 position: relative;
 width: 100%;
 height: 100%;
-overflow-y: hidden;
-}
-.flex-full-width{
-flex-grow: 1;
+overflow: hidden;
 }
 
 .menu{
   height: 100%;
   & .feature-nav{
     border-bottom: $bottom-border;
-    font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
 
     & ul{

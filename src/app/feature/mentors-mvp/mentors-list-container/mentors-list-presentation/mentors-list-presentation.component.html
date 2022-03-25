@@ -1,16 +1,27 @@
 <!-- table for the listing the form data -->
-<div class="m-4">
+<div class="d-flex justify-content-between m-4">
   <button class="btn btn-primary" routerLink="../add">+ ADD</button>
+  <div>
+    <button class="btn bg-light text-dark border border-dark fs-4 me-2" (click)="clearFilter()">Clear</button>
+    <button class="btn bg-light text-dark border border-dark fs-4" cdkOverlayOrigin #originOverlay="cdkOverlayOrigin" (click)="filter()"><i class="icon-funnel"></i></button>
+  </div>
 </div>
 
 <div class="">
-  <table class="table">
+  <table class="table" (click)="sortTable($event)">
     <thead>
       <tr class="text-center bottom-row">
         <th>#</th>
         <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Username</th>
+        <th>Email</th>
         <th>AGE</th>
         <th>GENDER</th>
+        <th>Birthdate</th>
+        <th>location</th>
+        <th>address</th>
+        <th>Mobile No</th>
         <th></th>
       </tr>
     </thead>
@@ -24,9 +35,16 @@
           *ngFor="let mentor of mentorsList; let i = index"
         >
           <td><input type="checkbox" name="" id="" /></td>
-          <td>{{ mentor.firstName }}</td>
+          <td>{{ mentor.firstname }}</td>
+          <td>{{ mentor.lastname }}</td>
+          <td>{{ mentor.username }}</td>
+          <td>{{ mentor.email }}</td>
           <td>{{ mentor.age }}</td>
           <td>{{ mentor.gender }}</td>
+          <td>{{ mentor.birthdate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ mentor.location }}</td>
+          <td>{{ mentor.address }}</td>
+          <td>{{ mentor.mobilenumber }}</td>
           <td
             class="position-relative"
             (click)="showModal(i)"

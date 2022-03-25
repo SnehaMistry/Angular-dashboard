@@ -46,10 +46,12 @@ export class UsersComponent implements OnInit {
     .withPush(false);
 
     let config = new OverlayConfig({
-      backdropClass: 'false', 
+      // backdropClass: 'false', 
       width : '500px',
-      positionStrategy
-      // backdropClass: 'cdk-overlay-dark-backdrop',
+      positionStrategy,
+      backdropClass: 'cdk-overlay-dark-backdrop',
+      hasBackdrop: true,
+      
     }); 
 
     var overlayRef = this.overlay.create(config);
