@@ -1,9 +1,17 @@
 <!-- table for the listing the form data -->
 <div class="d-flex justify-content-between m-4">
-  <button class="btn btn-primary" routerLink="../add">+ ADD</button>
+  <div class="">
+    <div class="d-flex flex-grow-1">
+      <button class="btn btn-primary whitespace-nowrap" routerLink="../add">+ ADD</button>
+      <div class="input-group ms-3 ">
+        <input type="text" #search placeholder="search here.."  class="col-4 form-control">
+        <button class="btn btn-primary" (click)="searchData()">Search</button>
+      </div>
+    </div>
+  </div>
   <div>
-    <button class="btn bg-light text-dark border border-dark fs-4 me-2" (click)="clearFilter()">Clear</button>
-    <button class="btn bg-light text-dark border border-dark fs-4" cdkOverlayOrigin #originOverlay="cdkOverlayOrigin" (click)="filter()"><i class="icon-funnel"></i></button>
+    <button class="btn bg-light text-dark border border-dark fs-5 me-2" (click)="clearFilter()">Clear</button>
+    <button class="btn bg-light text-dark border border-dark fs-5" cdkOverlayOrigin #originOverlay="cdkOverlayOrigin" (click)="filter()"><i class="icon-funnel"></i></button>
   </div>
 </div>
 

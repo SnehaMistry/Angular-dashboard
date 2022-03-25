@@ -125,4 +125,12 @@ export class MentorsListPresenterService {
         break;
     }
   }
+
+  public searchData(searchString :string, mentors : Mentors[]){
+    mentors.find(mentor => {
+      if(mentor.username.startsWith(searchString)){
+        
+      }
+    });
+  }
 }

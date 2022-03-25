@@ -15,6 +15,7 @@ import { MentorsListPresenterService } from '../mentors-list-presenter/mentors-l
 export class MentorsListPresentationComponent implements OnInit, OnChanges {
 
   @ViewChild('originOverlay') private _filter: ElementRef;
+  @ViewChild('search') private _searchValue: ElementRef;
   @Output() delMentor: EventEmitter<number> = new EventEmitter();
   @Input() public set mentorsList(value: Mentors[] | null) {
     if (value) {
@@ -92,12 +93,16 @@ export class MentorsListPresentationComponent implements OnInit, OnChanges {
     else{
       this.flag = 1; 
     };
-    this._mentorsList = this._listService.sortData(data.target['innerText'], this._mentorsList, this.flag);
+    this._mentorsList = this._listService.sortData(data.target['innerText'], this.tempMentorList, this.flag);
   }
 
   public clearFilter()
   {
     this._listService.clearFilter();
     this._mentorsList = this.tempMentorList;
+  }
+
+  public searchData(){
+    this._listService.searchData(this._searchValue.nativeElement.value, this.tempMentorList);
   }
 }
