@@ -4,7 +4,7 @@
     <div class="d-flex flex-grow-1">
       <button class="btn btn-primary whitespace-nowrap" routerLink="../add">+ ADD</button>
       <div class="input-group ms-3 ">
-        <input type="text" #search placeholder="search here.."  class="col-4 form-control">
+        <input type="text" #search placeholder="search here.."  class="col-4 form-control" [(ngModel)]="searchString">
         <button class="btn btn-primary" (click)="searchData()">Search</button>
       </div>
     </div>

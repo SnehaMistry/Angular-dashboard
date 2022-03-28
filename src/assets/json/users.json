@@ -123,16 +123,16 @@
     },
     {
       "id": 6,
-      "username": "aliya18",
-      "email": "farrell.rowena@yahoo.com",
       "firstname": "Efren",
       "lastname": "Jones",
+      "username": "nina15",
+      "email": "farrell.rowena@yahoo.com",
       "age": 76,
       "gender": "male",
       "birthdate": "1996-11-05 22:59:50",
       "location": "MN",
-      "mobilenumber": "+1-220-849-0658",
-      "address": "469 Harvey Harbor\nSammiefort, MN 98736"
+      "address": "469 Harvey Harbor\nSammiefort, MN 98736",
+      "mobilenumber": "+1-220-849-0658"
     },
     {
       "id": 7,

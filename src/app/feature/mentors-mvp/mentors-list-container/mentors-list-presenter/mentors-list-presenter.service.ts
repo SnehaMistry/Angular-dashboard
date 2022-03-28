@@ -3,7 +3,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { Component, ComponentRef, ElementRef, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { FilterComponent } from 'src/app/shared/component/filter/filter.component';
-import { filterData, Mentors } from '../../mentors.model';
+import { filterData, Mentors, searchFilter } from '../../mentors.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class MentorsListPresenterService {
   public mentorLists$ = new Observable<Mentors[]>();
 
   private _filtervalues: filterData;
-  private _componentRef : ComponentRef<any>;
+  private _componentRef: ComponentRef<any>;
 
   constructor(private _overlay: Overlay) {
     this.deleteMentor$ = this._deleteMentor.asObservable();
@@ -49,11 +49,11 @@ export class MentorsListPresenterService {
 
     var overlayRef = this._overlay.create(config);
     const filterformPortal = new ComponentPortal(FilterComponent);
-     this._componentRef = overlayRef.attach(filterformPortal);
+    this._componentRef = overlayRef.attach(filterformPortal);
     this._componentRef.instance.filterValues = this._filtervalues;
 
 
-    this._componentRef.instance.filterdata$?.subscribe((res :any ) => {
+    this._componentRef.instance.filterdata$?.subscribe((res: any) => {
       this._filtervalues = res;
       var filterresult = this.applyFilter(res, mentors);
       this._mentorLists.next(filterresult);
@@ -66,8 +66,8 @@ export class MentorsListPresenterService {
   }
 
   public clearFilter() {
-    this._filtervalues = { age: null, gender: '' };  
-    this._componentRef.instance.filterValues = this._filtervalues; 
+    this._filtervalues = { age: null, gender: '' };
+    this._componentRef.instance.filterValues = this._filtervalues;
   }
 
   public applyFilter(data: filterData, mentors: Mentors[]) {
@@ -92,16 +92,16 @@ export class MentorsListPresenterService {
       }
 
       if ((data.age) && (data.gender)) {
-        return mentors.filter(mentor => (mentor.age > startage && mentor.age < endage) && mentor.gender === data.gender);
+        return mentors?.filter(mentor => (mentor.age > startage && mentor.age < endage) && mentor.gender === data.gender);
       }
       else if (!data.age && data.gender) {
-        return mentors.filter(mentor => (mentor.gender === data.gender));
+        return mentors?.filter(mentor => (mentor.gender === data.gender));
       }
       else {
-        return mentors.filter(mentor => (mentor.age > startage && mentor.age < endage));
+        return mentors?.filter(mentor => (mentor.age > startage && mentor.age < endage));
       }
     }
-    else{
+    else {
       return mentors;
     }
   }
@@ -109,16 +109,16 @@ export class MentorsListPresenterService {
   public sortData(field: string, mentors: Mentors[], flag: number) {
     switch (field) {
       case 'Firstname':
-        return (flag === 1) ? mentors.sort((first, second) => (first.firstname < second.firstname) ? -1 : (first.firstname > second.firstname) ? 1 : 0) : mentors.sort((first, second) => (first.firstname < second.firstname) ? 1 : (first.firstname > second.firstname) ? -1 : 0);
+        return (flag === 1) ? mentors?.sort((first, second) => (first.firstname < second.firstname) ? -1 : (first.firstname > second.firstname) ? 1 : 0) : mentors?.sort((first, second) => (first.firstname < second.firstname) ? 1 : (first.firstname > second.firstname) ? -1 : 0);
         break;
       case 'Lastname':
-        return (flag === 1) ? mentors.sort((first, second) => (first.lastname < second.lastname) ? -1 : (first.lastname > second.lastname) ? 1 : 0) : mentors.sort((first, second) => (first.lastname < second.lastname) ? 1 : (first.lastname > second.lastname) ? -1 : 0);
+        return (flag === 1) ? mentors?.sort((first, second) => (first.lastname < second.lastname) ? -1 : (first.lastname > second.lastname) ? 1 : 0) : mentors?.sort((first, second) => (first.lastname < second.lastname) ? 1 : (first.lastname > second.lastname) ? -1 : 0);
         break;
       case 'AGE':
-        return (flag === 1) ? mentors.sort((first, second) => (first.age < second.age) ? -1 : (first.age > second.age) ? 1 : 0) : mentors.sort((first, second) => (first.age < second.age) ? 1 : (first.age > second.age) ? -1 : 0);
+        return (flag === 1) ? mentors?.sort((first, second) => (first.age < second.age) ? -1 : (first.age > second.age) ? 1 : 0) : mentors?.sort((first, second) => (first.age < second.age) ? 1 : (first.age > second.age) ? -1 : 0);
         break;
       case 'Birthdate':
-        return (flag === 1) ? mentors.sort((first, second) => (first.birthdate < second.birthdate) ? -1 : (first.birthdate > second.birthdate) ? 1 : 0) : mentors.sort((first, second) => (first.birthdate < second.birthdate) ? 1 : (first.birthdate > second.birthdate) ? -1 : 0);
+        return (flag === 1) ? mentors?.sort((first, second) => (first.birthdate < second.birthdate) ? -1 : (first.birthdate > second.birthdate) ? 1 : 0) : mentors?.sort((first, second) => (first.birthdate < second.birthdate) ? 1 : (first.birthdate > second.birthdate) ? -1 : 0);
         break;
       default:
         return mentors;
@@ -126,11 +126,18 @@ export class MentorsListPresenterService {
     }
   }
 
-  public searchData(searchString :string, mentors : Mentors[]){
-    mentors.find(mentor => {
-      if(mentor.username.startsWith(searchString)){
-        
-      }
+  public searchData(searchString: string, mentors: Mentors[]) {
+    
+    const properties = Object.keys(mentors[0]);
+    // debugger;
+    var resullt = mentors.filter(mentor => {
+      return properties.find((property) => {
+        const matchString = typeof(mentor[property as keyof searchFilter]) === 'string' ? mentor[property as keyof searchFilter].toLowerCase() : ''; 
+         (matchString.startsWith(searchString?.toLowerCase()))? mentor : '';
+      })
     });
+
+    console.log(resullt);
+    
   }
 }

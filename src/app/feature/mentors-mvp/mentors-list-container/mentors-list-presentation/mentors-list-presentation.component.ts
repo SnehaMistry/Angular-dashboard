@@ -17,13 +17,13 @@ export class MentorsListPresentationComponent implements OnInit, OnChanges {
   @ViewChild('originOverlay') private _filter: ElementRef;
   @ViewChild('search') private _searchValue: ElementRef;
   @Output() delMentor: EventEmitter<number> = new EventEmitter();
-  @Input() public set mentorsList(value: Mentors[] | null) {
+  @Input() public set mentorsList(value : Mentors[] | null) {
     if (value) {
       this._mentorsList = value;
     }
   }
 
-  public get mentorsList(): Mentors[] | null {
+  public get mentorsList() : Mentors[]{
     return this._mentorsList;
   }
 
@@ -34,6 +34,7 @@ export class MentorsListPresentationComponent implements OnInit, OnChanges {
   isOpen: boolean[];
   prevOpen?: number;
   flag :number;
+  public searchString :  string;
   constructor(private _listService: MentorsListPresenterService, private _route: Router, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
@@ -104,5 +105,6 @@ export class MentorsListPresentationComponent implements OnInit, OnChanges {
 
   public searchData(){
     this._listService.searchData(this._searchValue.nativeElement.value, this.tempMentorList);
+    
   }
 }

@@ -47,3 +47,10 @@ export class filterData{
         this.gender = gender; 
     }
 }
+
+export class searchFilter { 
+    firstname: string;
+    lastname : string;
+    username : string;
+    email: string;   
+}

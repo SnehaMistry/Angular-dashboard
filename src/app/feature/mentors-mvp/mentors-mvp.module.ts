@@ -11,6 +11,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MentorsFormContainerComponent,
     MentorsListContainerComponent,
     MentorsFormPresentationComponent,
-    MentorsListPresentationComponent
+    MentorsListPresentationComponent,
+    SearchPipe
   ],
   imports: [
     SharedModule,
