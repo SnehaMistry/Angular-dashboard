@@ -4,7 +4,7 @@
     <div class="d-flex flex-grow-1">
       <button class="btn btn-primary whitespace-nowrap" routerLink="../add">+ ADD</button>
       <div class="input-group ms-3 ">
-        <input type="text" #search placeholder="search here.."  class="col-4 form-control" [(ngModel)]="searchString">
+        <input type="text" #search placeholder="search here.."  class="col-4 form-control" [(ngModel)]="searchString" (keyup)="searchData()">
         <button class="btn btn-primary" (click)="searchData()">Search</button>
       </div>
     </div>
@@ -17,9 +17,8 @@
 
 <div class="">
   <table class="table" (click)="sortTable($event)">
-    <thead>
+    <thead class="">
       <tr class="text-center bottom-row">
-        <th>#</th>
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Username</th>
@@ -33,16 +32,16 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      <tr class="text-center bottom-row" *ngIf="length <= 0; else listrecords">
+    <tbody class="" cdkDropList (cdkDropListDropped)="drop($event)">
+      <tr class="text-center bottom-row" *ngIf="length <= 0; else listrecords" cdkDragLockAxis="y">
         <td colspan="8">No record Found</td>
       </tr>
       <ng-template #listrecords>
         <tr
-          class="text-center bottom-row"
+          class="text-center bottom-row "
           *ngFor="let mentor of mentorsList; let i = index"
+          cdkDrag
         >
-          <td><input type="checkbox" name="" id="" /></td>
           <td>{{ mentor.firstname }}</td>
           <td>{{ mentor.lastname }}</td>
           <td>{{ mentor.username }}</td>
@@ -70,7 +69,7 @@
               <li><a class="dropdown-item" (click)="editMentor(mentor.id)">Edit</a></li>
               <li><a class="dropdown-item" (click)="deleteMentor(mentor.id)">Delete</a></li>
               <li>
-                <a class="dropdown-item" href="#">Clone</a>
+                <a class="dropdown-item">Clone</a>
               </li>
             </ul>
           </ng-template>
@@ -78,5 +77,23 @@
       </ng-template>
     </tbody>
   </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" (click)="pageChange($event)">
+      <li class="page-item">
+        <a class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link">1</a></li>
+      <li class="page-item"><a class="page-link">2</a></li>
+      <li class="page-item"><a class="page-link">3</a></li>
+      <li class="page-item">
+        <a class="page-link" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
 <!-- end -->

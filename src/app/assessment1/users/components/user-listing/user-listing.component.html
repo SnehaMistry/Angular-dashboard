@@ -1,8 +1,8 @@
 <!-- table for the listing the form data -->
 <div class="table-wrapper">
     <table class="table-container">
-        <thead>
-            <tr class="text-center bottom-row">
+        <thead class="drag-list">
+            <tr class="text-center bottom-row drag-item">
                 <th>#</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
@@ -13,14 +13,14 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+        <tbody cdkDropList (cdkDropListDropped)="drop($event)" class="drag-list">
             <tr class="text-center bottom-row" *ngIf="length <= 0; else listrecords" cdkDragLockAxis="y">
                 <td colspan="8">
                     No record Found
                 </td>
             </tr>
             <ng-template #listrecords> 
-                <tr class="text-center bottom-row"  cdkDrag *ngFor="let user of userList; let i = index">
+                <tr class="text-center bottom-row drag-item"  cdkDrag *ngFor="let user of userList; let i = index">
                     <td><input type="checkbox" name="" id=""></td>
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>

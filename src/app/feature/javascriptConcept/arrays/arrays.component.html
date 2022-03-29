@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of studentDetails; let i = index">
+        <tr *ngFor="let student of studentDetails; let i = index" class="drag-list">
           <td>{{ student.id }}</td>
           <td>{{ student.name }}</td>
           <td>{{ student.section }}</td>

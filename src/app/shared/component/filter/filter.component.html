@@ -1,28 +1,43 @@
 <div class="bg-light p-4 filter-container h-100">
-    <h2>Apply filters</h2>
-    <div [formGroup]="filterForm">
+  <h2>Apply filters</h2>
+  <div [formGroup]="filterForm">
     <div class="mb-3">
-        <label for="agw">Age: </label>
-        <select id="age" class="form-select" formControlName="age">
-            <option value=25>1-25</option>
-            <option value=50>26-50</option>
-            <option value=75>51-75</option>
-            <option value=100>75-100</option>
-        </select>
+      <label for="agw">Age: </label>
+      <select id="age" class="form-select" formControlName="age">
+        <option value="25">1-25</option>
+        <option value="50">26-50</option>
+        <option value="75">51-75</option>
+        <option value="100">75-100</option>
+      </select>
     </div>
     <div class="mb-3">
-        <label for="gender-label">Gender: </label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" id="radio1" name="gender" value="male" formControlName="gender"/>
-            <label class="form-check-label" for="radio1"> Male </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="radio2" name="gender" value="female" formControlName="gender" />
-            <label class="form-check-label" for="radio2" > Female </label>
-          </div>
+      <label for="gender-label">Gender: </label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="radio1"
+          name="gender"
+          value="male"
+          formControlName="gender"
+        />
+        <label class="form-check-label" for="radio1"> Male </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          id="radio2"
+          name="gender"
+          value="female"
+          formControlName="gender"
+        />
+        <label class="form-check-label" for="radio2"> Female </label>
+      </div>
     </div>
-    </div>
-    <div>
-       <button type="submit" class="btn btn-success" (click)="filter()">Apply</button> 
-    </div>
+  <div>
+    <button type="submit" class="btn btn-success" (click)="filter()">
+      Apply
+    </button>
+  </div>
 </div>

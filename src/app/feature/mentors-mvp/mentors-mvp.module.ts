@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SearchPipe } from './search.pipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { SearchPipe } from './search.pipe';
   imports: [
     SharedModule,
     MentorsMvpRoutingModule,
-    OverlayModule
+    OverlayModule,
+    DragDropModule
   ],
   providers:[
     MentorsService

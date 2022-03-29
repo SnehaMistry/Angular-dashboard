@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ConnectionPositionPair, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { AfterContentChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
@@ -19,7 +20,14 @@ export class MentorsListPresentationComponent implements OnInit, OnChanges {
   @Output() delMentor: EventEmitter<number> = new EventEmitter();
   @Input() public set mentorsList(value : Mentors[] | null) {
     if (value) {
+     
+      console.log(this._mentorsList);
+      if(this._mentorsList)
+      {
+        this._listService.setmentorsList();
+      }
       this._mentorsList = value;
+        
     }
   }
 
@@ -104,7 +112,17 @@ export class MentorsListPresentationComponent implements OnInit, OnChanges {
   }
 
   public searchData(){
-    this._listService.searchData(this._searchValue.nativeElement.value, this.tempMentorList);
+    this._mentorsList = this._listService.searchData(this._searchValue.nativeElement.value, this.tempMentorList);
     
+  }
+
+  public drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.mentorsList, event.previousIndex, event.currentIndex);
+  }
+
+  public pageChange(event : any)
+  {
+    console.log(event.target['text']);
+    this._listService.changePage(event.target['text']);
   }
 }

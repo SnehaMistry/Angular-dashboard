@@ -42,6 +42,7 @@ export class FilterComponent implements OnInit {
   {
     if(this.filterForm.value)
     {
+      console.log(this.filterForm.value)
       this._filterdata.next(this.filterForm.value);
     }
     

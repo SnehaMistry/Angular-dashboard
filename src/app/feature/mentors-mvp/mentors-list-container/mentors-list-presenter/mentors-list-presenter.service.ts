@@ -24,6 +24,11 @@ export class MentorsListPresenterService {
     this.mentorLists$ = this._mentorLists.asObservable();
   }
 
+  public setmentorsList()
+  {
+    console.log('call');
+      
+  }
   public delete(id: number) {
     this._deleteMentor.next(id);
   }
@@ -107,37 +112,25 @@ export class MentorsListPresenterService {
   }
 
   public sortData(field: string, mentors: Mentors[], flag: number) {
-    switch (field) {
-      case 'Firstname':
-        return (flag === 1) ? mentors?.sort((first, second) => (first.firstname < second.firstname) ? -1 : (first.firstname > second.firstname) ? 1 : 0) : mentors?.sort((first, second) => (first.firstname < second.firstname) ? 1 : (first.firstname > second.firstname) ? -1 : 0);
-        break;
-      case 'Lastname':
-        return (flag === 1) ? mentors?.sort((first, second) => (first.lastname < second.lastname) ? -1 : (first.lastname > second.lastname) ? 1 : 0) : mentors?.sort((first, second) => (first.lastname < second.lastname) ? 1 : (first.lastname > second.lastname) ? -1 : 0);
-        break;
-      case 'AGE':
-        return (flag === 1) ? mentors?.sort((first, second) => (first.age < second.age) ? -1 : (first.age > second.age) ? 1 : 0) : mentors?.sort((first, second) => (first.age < second.age) ? 1 : (first.age > second.age) ? -1 : 0);
-        break;
-      case 'Birthdate':
-        return (flag === 1) ? mentors?.sort((first, second) => (first.birthdate < second.birthdate) ? -1 : (first.birthdate > second.birthdate) ? 1 : 0) : mentors?.sort((first, second) => (first.birthdate < second.birthdate) ? 1 : (first.birthdate > second.birthdate) ? -1 : 0);
-        break;
-      default:
-        return mentors;
-        break;
-    }
+    const properties = field.toLowerCase();
+    
+    return (flag === 1) ? mentors?.sort((first, second) => (first[properties as keyof Mentors] < second[properties as keyof Mentors]) ? -1 : (first[properties as keyof Mentors] > second[properties as keyof Mentors]) ? 1 : 0) : mentors?.sort((first, second) => (first[properties as keyof Mentors] < second[properties as keyof Mentors]) ? 1 : (first[properties as keyof Mentors] > second[properties as keyof Mentors]) ? -1 : 0);
   }
 
   public searchData(searchString: string, mentors: Mentors[]) {
     
     const properties = Object.keys(mentors[0]);
-    // debugger;
-    var resullt = mentors.filter(mentor => {
+    return mentors.filter(mentor => {
       return properties.find((property) => {
         const matchString = typeof(mentor[property as keyof searchFilter]) === 'string' ? mentor[property as keyof searchFilter].toLowerCase() : ''; 
-         (matchString.startsWith(searchString?.toLowerCase()))? mentor : '';
+        return (matchString.startsWith(searchString?.toLowerCase()))? mentor : '';
       })
     });
-
-    console.log(resullt);
     
+  }
+
+  public changePage(page : string)
+  {
+
   }
 }
