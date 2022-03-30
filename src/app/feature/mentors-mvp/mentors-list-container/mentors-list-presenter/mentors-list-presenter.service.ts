@@ -19,16 +19,14 @@ export class MentorsListPresenterService {
   private _filtervalues: filterData;
   private _componentRef: ComponentRef<any>;
 
+  private startData = 1;
+  private endData = 0;
+  public listsize = 5;
   constructor(private _overlay: Overlay) {
     this.deleteMentor$ = this._deleteMentor.asObservable();
     this.mentorLists$ = this._mentorLists.asObservable();
   }
 
-  public setmentorsList()
-  {
-    console.log('call');
-      
-  }
   public delete(id: number) {
     this._deleteMentor.next(id);
   }
@@ -129,8 +127,22 @@ export class MentorsListPresenterService {
     
   }
 
-  public changePage(page : string)
+  public fetchPageData(activepage : number,  mentors : Mentors[])
   {
-
+    if(activepage == 1){
+      this.startData = 1;
+      this.endData = 0;
+    }
+       
+    this.startData = this.startData * this.endData;
+    this.endData = this.endData + this.listsize;
+    
+    mentors = mentors.slice(this.startData, this.endData);
+    if(activepage == 1)
+    {
+      this.startData = 1;
+    }
+    this._mentorLists.next(mentors);
   }
+
 }
