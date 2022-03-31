@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'app';
-  src:  url('fonts/app.eot?fzhd21');
-  src:  url('fonts/app.eot?fzhd21#iefix') format('embedded-opentype'),
-    url('fonts/app.ttf?fzhd21') format('truetype'),
-    url('fonts/app.woff?fzhd21') format('woff'),
-    url('fonts/app.svg?fzhd21#app') format('svg');
+  src:  url('fonts/app.eot?8ovgbo');
+  src:  url('fonts/app.eot?8ovgbo#iefix') format('embedded-opentype'),
+    url('fonts/app.ttf?8ovgbo') format('truetype'),
+    url('fonts/app.woff?8ovgbo') format('woff'),
+    url('fonts/app.svg?8ovgbo#app') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-funnel:before {
+.icon-trash-2:before {
   content: "\e900";
+}
+.icon-file-text:before {
+  content: "\e901";
+}
+.icon-upload:before {
+  content: "\e902";
+}
+.icon-funnel:before {
+  content: "\e903";
 }
