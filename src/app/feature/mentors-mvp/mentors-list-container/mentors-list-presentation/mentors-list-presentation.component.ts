@@ -96,7 +96,7 @@ export class MentorsListPresentationComponent implements OnInit, OnChanges, Afte
     else {
       this.flag = 1;
     };
-    this._mentorsList = this._listService.sortData(data.target['innerText'], this.tempMentorList, this.flag);
+   this._listService.fetchPageData(1,this._listService.sortData(data.target['innerText'], this.tempMentorList, this.flag));
   }
 
   public clearFilter() {

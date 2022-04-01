@@ -12,6 +12,7 @@ import { MentorsService } from '../mentors.service';
 })
 export class MentorsFormContainerComponent implements OnInit {
 
+  public mentorList$ : Observable<Mentors[]>;
   public editMentorData$ = new Observable<Mentors>();
   private _id : number
   constructor(private _mentorService : MentorsService, private _route : Router, private _routerAct : ActivatedRoute) { }
@@ -22,10 +23,12 @@ export class MentorsFormContainerComponent implements OnInit {
       {
         this.editMentorData$ = this._mentorService.getByID(this._id);
       }
+      this.getMentors();
   }
 
   addMentors(mentorForm : Mentors)
   {
+
     this._mentorService.saveMentor(mentorForm).subscribe(
       (res) => {
       this._route.navigate(['user-mvp/list']);
@@ -38,5 +41,12 @@ export class MentorsFormContainerComponent implements OnInit {
       (res) => {
         this._route.navigate(['user-mvp/list']);
       })
+  }
+
+  getMentors(){
+    this._mentorService.getAllMentors().subscribe((res) => {
+      console.log(res);
+    })
+    this.mentorList$ = this._mentorService.getAllMentors();
   }
 }

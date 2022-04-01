@@ -1,7 +1,7 @@
 <div class="file-container d-flex flex-column justify-content-center align-items-center p-4" 
     AppfileDragDrop 
     (fileDropped)="onFileDropped($event)">
-	<input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)"/>
+	<input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)" />
 	<figure>
         <img src="./assets/images/upload.svg" alt="File upload">
     </figure>
@@ -29,6 +29,6 @@
 			<span class="icon-trash-2"></span>
 		</div>
 	</div>
-
-    <button (click)="UploadFile()">Upload Files</button>
+		<button class="btn btn-success" [disabled]="" (click)="UploadFile()">Upload Files</button>
+    
 </ng-container>

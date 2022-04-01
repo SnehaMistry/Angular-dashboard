@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, Observable } from 'rxjs';
-import { Mentors } from '../../mentors.model';
+import { FileArray, Mentors } from '../../mentors.model';
 
 @Injectable()
 export class MentorsFormPresenterService {
@@ -27,6 +27,7 @@ export class MentorsFormPresenterService {
       location: ['',[Validators.required, Validators.pattern('^[_A-z]*((-|\s)*[_A-z])*$')]],
       address: ['',Validators.required],
       mobilenumber: ['',[Validators.required, Validators.pattern('^[+0-9]*((-|\s)*[+0-9])*$')]],
+      uploadFile : ['']
     })
   }
 
@@ -36,4 +37,13 @@ export class MentorsFormPresenterService {
     }
     this.mentorFromData.next(mentorForm.value);
   }
+
+  public checkUniqueFile(files : FileArray[], mentors: Mentors[] | null)
+  {
+    return mentors?.some(mentor => {
+      files.find(file => (mentor.uploadFile?.name) ? mentor.uploadFile.name === file.name : file.name);
+    });
+    
+  }
+
 }

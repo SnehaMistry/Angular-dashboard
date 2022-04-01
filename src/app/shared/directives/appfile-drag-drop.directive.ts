@@ -23,7 +23,9 @@ export class AppfileDragDropDirective {
    @HostListener('drop', ['$event']) public ondrop(evt : any) {
     evt.preventDefault();
     evt.stopPropagation();
+    
     let files = evt.dataTransfer.files;
+    console.log(files);
     if (files.length > 0) {
       this.fileDropped.emit(files);
     }

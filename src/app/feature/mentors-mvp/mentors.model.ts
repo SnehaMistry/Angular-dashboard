@@ -10,6 +10,7 @@ export class Mentors {
     mobilenumber: string;
     location: string;
     address: string;
+    uploadFile : FileArray;
 
     constructor(
         id: number,
@@ -52,5 +53,26 @@ export class searchFilter {
     firstname: string;
     lastname : string;
     username : string;
-    email: string;   
+    email: string;
+    
+    constructor(firstname : string , lastname : string,  username : string, email: string)
+    {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username  =username;
+        this.email = email;
+    }
+}
+
+export class FileArray{
+    name : string;
+    size : string;
+    type: string;
+
+    constructor( name :string, size: string, type: string)
+    {
+        this.name = name;
+        this.size = size;
+        this.type = type;
+    }
 }

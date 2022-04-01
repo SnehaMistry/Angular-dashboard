@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Mentors } from '../../mentors.model';
+import { Router } from '@angular/router';
+import { FileArray, Mentors } from '../../mentors.model';
 import { MentorsFormPresenterService } from '../mentors-form-presenter/mentors-form-presenter.service';
 
 @Component({
@@ -10,10 +10,11 @@ import { MentorsFormPresenterService } from '../mentors-form-presenter/mentors-f
   styleUrls: ['./mentors-form-presentation.component.scss'],
   viewProviders: [MentorsFormPresenterService]
 })
-export class MentorsFormPresentationComponent implements OnInit {
+export class MentorsFormPresentationComponent implements OnInit, OnChanges {
 
-  mentorForm : FormGroup
-
+  mentorForm : FormGroup;
+  fileData : FileArray[];
+  @Input() public mentorList : Mentors[] | null;
   @Input() public set editmentor (value : Mentors | null){
     if(value)
     {
@@ -27,17 +28,28 @@ export class MentorsFormPresentationComponent implements OnInit {
 
   ngOnInit(): void {
     this.mentorForm = this._formService.buildForm();
-   
-
     this._formService.mentorFormData$.subscribe(res => {
       (res.id === null) ? this.add.emit(res) : this.edit.emit(res);
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.mentorList);
+  }
 
   public mentorSave()
   {
-    if(this.mentorForm.value)
+    let fileInfo : string = '';
+    this.fileData.forEach(file => {
+      let temp = new FileArray(file.name, file.size, file.type);
+      console.log(JSON.stringify(temp));
+      fileInfo = fileInfo.concat(JSON.stringify(temp));
+    });
+    console.log(fileInfo);
+    this.mentorForm.get('uploadFile')?.setValue(JSON.stringify(this.fileData));
+    this.mentorForm.patchValue(this.mentorForm.value);
+    debugger;
+    if(this.mentorForm.valid)
     {
       this._formService.addForm(this.mentorForm);
     }
@@ -47,9 +59,19 @@ export class MentorsFormPresentationComponent implements OnInit {
     return this.mentorForm.controls;
   }
 
-
   cancelForm(){
     this._route.navigate([`user-mvp/list`]);
+  }
+
+  public getFileData(fileData : FileArray[]){
+     
+    if(!this._formService.checkUniqueFile(fileData, this.mentorList)){
+      this.fileData = fileData;
+    }
+    else{
+      alert('File name should not be the same');
+    }
+
   }
 
 

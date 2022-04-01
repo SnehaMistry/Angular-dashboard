@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FileArray } from 'src/app/feature/mentors-mvp/mentors.model';
 
 @Component({
   selector: 'app-drag-and-drop-file',
@@ -8,11 +9,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class DragAndDropFileComponent implements OnInit {
   files: any[] = [];
-  
+  FileGroup : FormGroup;
+  @Output() uploadedFile : EventEmitter<FileArray[]> = new EventEmitter<FileArray[]>();
   constructor() { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {    
   }
 
   onFileDropped($event : any) {
@@ -30,6 +31,10 @@ export class DragAndDropFileComponent implements OnInit {
         if(item.size > 2000000)
         { 
           alert("Your file size is more then 2 MB.");
+          return;
+        }
+        else if(item.type != "image/png" && item.type != "image/jpeg" && item.type != "image/svg+xml"){
+          alert("File must be the Image file");
           return;
         }
         item.progress = 0;
@@ -89,7 +94,7 @@ export class DragAndDropFileComponent implements OnInit {
 
   public UploadFile()
   {
-    console.log("hii");
+    this.uploadedFile.emit(this.files);    
   }
 
 }
