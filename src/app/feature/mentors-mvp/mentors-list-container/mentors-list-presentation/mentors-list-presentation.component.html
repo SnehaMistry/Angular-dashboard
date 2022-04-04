@@ -29,6 +29,7 @@
         <th>location</th>
         <th>address</th>
         <th>Mobile No</th>
+        <th>thumbnail</th>
         <th></th>
       </tr>
     </thead>
@@ -52,6 +53,7 @@
           <td>{{ mentor.location }}</td>
           <td>{{ mentor.address }}</td>
           <td>{{ mentor.mobilenumber }}</td>
+          <td *ngIf="mentor.uploadFile"><button (click)="redirectImage(imageRef)" #imageRef value="{{showFile(mentor)}}">view Image</button></td>
           <td
             class="position-relative"
             (click)="showModal(i)"
@@ -78,7 +80,7 @@
     </tbody>
   </table>
 
-    <app-pagination *ngIf="length > 0" [totalRecords]="10" [recordsPerPage]="5" (onPageChange)="displayActivePage($event)"></app-pagination>
+    <app-pagination *ngIf="length > 0" [totalRecords]="length" [recordsPerPage]="5" (onPageChange)="displayActivePage($event)"></app-pagination>
 
 </div>
 <!-- end -->

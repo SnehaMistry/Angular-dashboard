@@ -10,25 +10,25 @@
 	<h3>or</h3>
 	<label for="fileDropRef" class="browse-button btn btn-danger">Browse for file</label>
 </div>
-<ng-container *ngIf="files.length > 0">
-	<div class="dash-border d-flex my-3" *ngFor="let file of files; let i = index">
+<ng-container *ngIf="files">
+	<div class="dash-border d-flex my-3">
 		<div class="file-icon p-2 ">
 			<figure><img src="./assets/images/file-text.svg" alt="" height="50px"></figure>
 		</div>
 		<div class=" flex-grow-1 py-3">
 			<h4 class="name">
-				{{ file?.name }}
+				{{ files?.name }}
 			</h4>
 			<p class="size">
-				{{ formatBytes(file?.size) }}
+				{{ formatBytes(files?.size) }}
 			</p>
-			<app-progress-file [progress]="file?.progress"></app-progress-file>
+			<app-progress-file [progress]="files?.progress"></app-progress-file>
 		</div>
 
-		<div class="d-flex align-items-end cursor-pointer" (click)="deleteFile(i)">
+		<div class="d-flex align-items-end cursor-pointer" (click)="deleteFile()">
 			<span class="icon-trash-2"></span>
 		</div>
 	</div>
-		<button class="btn btn-success" [disabled]="" (click)="UploadFile()">Upload Files</button>
+		<button class="btn btn-success" (click)="UploadFile()">Upload Files</button>
     
 </ng-container>

@@ -8,9 +8,9 @@ import { FileArray } from 'src/app/feature/mentors-mvp/mentors.model';
   styleUrls: ['./drag-and-drop-file.component.scss']
 })
 export class DragAndDropFileComponent implements OnInit {
-  files: any[] = [];
+  files: any;
   FileGroup : FormGroup;
-  @Output() uploadedFile : EventEmitter<FileArray[]> = new EventEmitter<FileArray[]>();
+  @Output() uploadedFile : EventEmitter<FileArray> = new EventEmitter<FileArray>();
   constructor() { }
 
   ngOnInit(): void {    
@@ -19,6 +19,7 @@ export class DragAndDropFileComponent implements OnInit {
   onFileDropped($event : any) {
    
     this.prepareFilesList($event);
+    debugger;
   }
 
    /**
@@ -38,24 +39,31 @@ export class DragAndDropFileComponent implements OnInit {
           return;
         }
         item.progress = 0;
-        this.files.push(item);
+        const reader = new FileReader();
+        reader.readAsDataURL(item);
+        reader.onload = () => {
+    
+          this.files.content = reader.result as string;
+        };
+        
+        this.files = item;
       }
       this.uploadFilesSimulator(0);
     }
 
     private uploadFilesSimulator(index: number) {
       setTimeout(() => {
-        if (index === this.files.length) {
+        if(!this.files) {
           return;
         } else {
           const progressInterval = setInterval(() => {
-            if (this.files[index].progress === 100) {
+            if (this.files.progress === 100) {
               clearInterval(progressInterval);
               this.uploadFilesSimulator(index + 1);
             } else {
-              this.files[index].progress += 5;
+              this.files.progress += 5;
             }
-          }, 200);
+          },0);
         }
       }, 1000);
     }
@@ -71,8 +79,8 @@ export class DragAndDropFileComponent implements OnInit {
    * Delete file from files list
    * @param index (File index)
    */
-    deleteFile(index: number) {
-      this.files.splice(index, 1);
+    deleteFile() {
+      this.files= '';
     }
 
     /**

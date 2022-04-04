@@ -68,11 +68,13 @@ export class FileArray{
     name : string;
     size : string;
     type: string;
+    content : string;
 
-    constructor( name :string, size: string, type: string)
+    constructor( name :string, size: string, type: string, content : string)
     {
         this.name = name;
         this.size = size;
         this.type = type;
+        this.content = content;
     }
 }

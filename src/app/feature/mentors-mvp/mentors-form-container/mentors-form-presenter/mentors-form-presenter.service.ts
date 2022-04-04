@@ -38,12 +38,14 @@ export class MentorsFormPresenterService {
     this.mentorFromData.next(mentorForm.value);
   }
 
-  public checkUniqueFile(files : FileArray[], mentors: Mentors[] | null)
+  public checkUniqueFile(files : FileArray, mentors: Mentors[] | null)
   {
-    return mentors?.some(mentor => {
-      files.find(file => (mentor.uploadFile?.name) ? mentor.uploadFile.name === file.name : file.name);
-    });
+    return mentors?.some(mentor => {(mentor.uploadFile?.name) ? mentor.uploadFile.name === files.name : files.name});
     
+  }
+
+  public getImageFile(){
+
   }
 
 }
