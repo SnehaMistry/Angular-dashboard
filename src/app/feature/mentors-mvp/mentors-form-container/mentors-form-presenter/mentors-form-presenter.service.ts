@@ -40,7 +40,7 @@ export class MentorsFormPresenterService {
 
   public checkUniqueFile(files : FileArray, mentors: Mentors[] | null)
   {
-    return mentors?.some(mentor => {(mentor.uploadFile?.name) ? mentor.uploadFile.name === files.name : files.name});
+    return mentors?.find(mentor => mentor.uploadFile?.name === files.name);
     
   }
 

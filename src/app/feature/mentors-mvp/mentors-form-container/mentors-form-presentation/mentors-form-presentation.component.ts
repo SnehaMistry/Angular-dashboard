@@ -39,7 +39,6 @@ export class MentorsFormPresentationComponent implements OnInit, OnChanges {
   }
 
   public getFileData(fileData : FileArray){
-     
     if(!this._formService.checkUniqueFile(fileData, this.mentorList)){
       this.fileData = fileData;
       this.isFiledata = true;

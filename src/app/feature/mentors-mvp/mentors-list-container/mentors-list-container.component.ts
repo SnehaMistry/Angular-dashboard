@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+
+//**********************Custom imports*************************************/
 import { Mentors } from '../mentors.model';
 import { MentorsService } from '../mentors.service';
 
@@ -10,6 +12,9 @@ import { MentorsService } from '../mentors.service';
 })
 export class MentorsListContainerComponent implements OnInit {
 
+  /**
+   * @mentorsList$ as a observable and subscribe it to its child
+   */
   public mentorsList$;
  
   constructor(private _mentorService : MentorsService) {
@@ -20,6 +25,9 @@ export class MentorsListContainerComponent implements OnInit {
     this.getMentors();
   }
 
+  /**
+   * @description call delete api service  
+   */
   public mentorDelete(id: number)
   {
     this._mentorService.deleteMentor(id).subscribe((res) => {
@@ -27,6 +35,9 @@ export class MentorsListContainerComponent implements OnInit {
     })
   }
 
+  /**
+   * @description get all mentors list from api service  
+   */
   public getMentors()
   {
     this.mentorsList$ = this._mentorService.getAllMentors();

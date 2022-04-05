@@ -1,3 +1,8 @@
+/**
+ * define model class for mentors data.
+ *  create mentors instance it need the mentors data as a constructor @param
+ */
+
 export class Mentors {
     id: number;
     firstname: string;
@@ -39,6 +44,9 @@ export class Mentors {
 
 }
 
+/**
+ * FilterData class is for the filter overlay data model
+ */
 export class filterData{
     age : number | null;
     gender : string;
@@ -49,6 +57,9 @@ export class filterData{
     }
 }
 
+/**
+ * searchFilter class is for the searching data
+ */
 export class searchFilter { 
     firstname: string;
     lastname : string;
@@ -64,6 +75,9 @@ export class searchFilter {
     }
 }
 
+/**
+ * FileArray class is for the uploadfile data.
+ */
 export class FileArray{
     name : string;
     size : string;
