@@ -42,10 +42,8 @@ export class DragAndDropFileComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(item);
         reader.onload = () => {
-    
           this.files.content = reader.result as string;
         };
-        
         this.files = item;
       }
       this.uploadFilesSimulator(0);

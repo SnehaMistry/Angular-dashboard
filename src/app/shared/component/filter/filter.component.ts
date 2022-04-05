@@ -24,7 +24,6 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
 
     this.filterForm = this.buildForm();
-    console.log(this.filterValues);
     if(this.filterValues)
     this.filterForm.patchValue(this.filterValues);
     
@@ -42,7 +41,6 @@ export class FilterComponent implements OnInit {
   {
     if(this.filterForm.value)
     {
-      console.log(this.filterForm.value)
       this._filterdata.next(this.filterForm.value);
     }
     

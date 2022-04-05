@@ -53,7 +53,10 @@
           <td>{{ mentor.location }}</td>
           <td>{{ mentor.address }}</td>
           <td>{{ mentor.mobilenumber }}</td>
-          <td *ngIf="mentor.uploadFile"><button (click)="redirectImage(imageRef)" #imageRef value="{{showFile(mentor)}}">view Image</button></td>
+          <td >
+            <!-- <button (click)="redirectImage(imageRef)" #imageRef value="{{showFile(mentor)}}">view Image</button> -->
+            <img [src]="showFile(mentor)" alt="User Image">
+          </td>
           <td
             class="position-relative"
             (click)="showModal(i)"

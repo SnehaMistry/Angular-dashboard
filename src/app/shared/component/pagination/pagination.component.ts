@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+  styleUrls: ['./pagination.component.scss'],
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
 
   @Input() totalRecords = 0;  
   @Input() recordsPerPage = 0;  
@@ -22,11 +22,10 @@ export class PaginationComponent implements OnInit {
       this.setpage();
   }
 
-  // ngOnChanges(): any {  
-
-  //   if(this.totalRecords)
-  //     this.setpage();
-  // }  
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.totalRecords)
+      this.setpage();
+  }  
 
   private  getPageCount(): number {  
     let totalPage = 0;  

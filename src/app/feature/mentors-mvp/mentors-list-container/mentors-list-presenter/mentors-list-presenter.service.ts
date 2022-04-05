@@ -127,22 +127,14 @@ export class MentorsListPresenterService {
     
   }
 
-  public fetchPageData(activepage : number,  mentors : Mentors[])
-  {
-    if(activepage == 1){
-      this.startData = 1;
-      this.endData = 0;
-    }
-       
-    this.startData = this.startData * this.endData;
-    this.endData = this.endData + this.listsize;
+  public fetchPageData(activepage : number,  mentors : Mentors[], recordsPerPage : number)
+  { 
+    this.startData = recordsPerPage * (activepage - 1);
+    this.endData = recordsPerPage * activepage;
     
     mentors = mentors.slice(this.startData, this.endData);
-    if(activepage == 1)
-    {
-      this.startData = 1;
-    }
-    this._mentorLists.next(mentors);
+    // this._mentorLists.next(mentors);
+    return mentors;
   }
 
 }

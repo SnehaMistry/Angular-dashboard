@@ -53,15 +53,7 @@ export class MentorsFormPresentationComponent implements OnInit, OnChanges {
   }
 
   public mentorSave()
-  {
-    // let fileInfo : string = '';
-    // this.fileData.forEach(file => {
-    //   let temp = new FileArray(file.name, file.size, file.type);
-    //   console.log(JSON.stringify(temp));
-    //   fileInfo = fileInfo.concat(JSON.stringify(temp));
-    // });
-    // this.mentorForm.get('uploadFile')?.setValue(fileInfo);
-   
+  {   
     if(this.isFiledata)
     {
       let temp: FileArray = {
@@ -74,8 +66,6 @@ export class MentorsFormPresentationComponent implements OnInit, OnChanges {
     }
       if(this.mentorForm.valid)
       {
-        console.log(this.mentorForm.value);
-        debugger;
         this._formService.addForm(this.mentorForm);
       }
     
